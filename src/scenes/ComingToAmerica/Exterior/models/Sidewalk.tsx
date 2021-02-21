@@ -14,41 +14,34 @@ import { MeshStandardMaterial } from "three";
 
 type GLTFResult = GLTF & {
   nodes: {
-    building: THREE.Mesh;
+    barbers: THREE.Mesh;
+    highlight: THREE.Mesh;
+    customs: THREE.Mesh;
+    barberpole: THREE.Mesh;
+    barbershop_glass: THREE.Mesh;
+    trash: THREE.Mesh;
     lattice: THREE.Mesh;
     windows: THREE.Mesh;
-    glass: THREE.Mesh;
-    barbershop: THREE.Mesh;
-    trash: THREE.Mesh;
-    white: THREE.Mesh;
-    barberpole: THREE.Mesh;
-    barbershopsign: THREE.Mesh;
-    billboard: THREE.Mesh;
-    overhang: THREE.Mesh;
-    address: THREE.Mesh;
-    open: THREE.Mesh;
-    street: THREE.Mesh;
+    windows_glass: THREE.Mesh;
+    building: THREE.Mesh;
     sidewalk: THREE.Mesh;
+    street: THREE.Mesh;
     collider: THREE.Mesh;
   };
   materials: {
+    ["barbers.mat"]: THREE.MeshStandardMaterial;
+    ["highlight.mat"]: THREE.MeshStandardMaterial;
+    ["customs.mat"]: THREE.MeshStandardMaterial;
+    ["barberpole.mat"]: THREE.MeshStandardMaterial;
+    ["barbershop_glass.mat"]: THREE.MeshStandardMaterial;
+    ["trash.mat"]: THREE.MeshStandardMaterial;
     ["lattice.mat"]: THREE.MeshStandardMaterial;
     ["windows.mat"]: THREE.MeshStandardMaterial;
-    ["glass.mat"]: THREE.MeshStandardMaterial;
-    ["barbershop.mat"]: THREE.MeshStandardMaterial;
-    ["trash.mat"]: THREE.MeshStandardMaterial;
-    ["white.mat"]: THREE.MeshStandardMaterial;
-    ["barberpole.mat"]: THREE.MeshStandardMaterial;
-    ["barbershopsign.mat"]: THREE.MeshStandardMaterial;
-    ["billboard.mat"]: THREE.MeshStandardMaterial;
-    ["overhang.mat"]: THREE.MeshStandardMaterial;
-    ["address.1"]: THREE.MeshStandardMaterial;
-    open: THREE.MeshStandardMaterial;
   };
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/C2ASidewalk-1613822350/sidewalk_02.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/C2ASidewalk-1613902888/sidewalk_03.glb";
 
 const TILE_TEX =
   "https://d27rt3a60hh1lx.cloudfront.net/content/c2a/white_tile.jpg";
@@ -95,9 +88,34 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
     <group ref={group} {...props} dispose={null}>
       <group scale={[0.35, 0.35, 0.35]}>
         <mesh
-          name="building"
-          material={tileMat}
-          geometry={nodes.building.geometry}
+          name="barber"
+          material={materials["barbers.mat"]}
+          geometry={nodes.barbers.geometry}
+        />
+        <mesh
+          name="highlight"
+          material={materials["highlight.mat"]}
+          geometry={nodes.highlight.geometry}
+        />
+        <mesh
+          name="customs"
+          material={materials["customs.mat"]}
+          geometry={nodes.customs.geometry}
+        />
+        <mesh
+          name="barberpole"
+          material={materials["barberpole.mat"]}
+          geometry={nodes.barberpole.geometry}
+        />
+        <mesh
+          name="barbershop_glass"
+          material={materials["barbershop_glass.mat"]}
+          geometry={nodes.barbershop_glass.geometry}
+        />
+        <mesh
+          name="trash"
+          material={materials["trash.mat"]}
+          geometry={nodes.trash.geometry}
         />
         <mesh
           name="lattice"
@@ -112,58 +130,14 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
           scale={[0.8432, -0.8432, 0.8432]}
         />
         <mesh
-          name="glass"
-          material={materials["glass.mat"]}
-          geometry={nodes.glass.geometry}
+          name="windows_glass"
+          material={nodes.windows_glass.material}
+          geometry={nodes.windows_glass.geometry}
         />
         <mesh
-          name="barbershop"
-          material={materials["barbershop.mat"]}
-          geometry={nodes.barbershop.geometry}
-        />
-        <mesh
-          name="trash"
-          material={materials["trash.mat"]}
-          geometry={nodes.trash.geometry}
-        />
-        <mesh
-          name="white"
-          material={materials["white.mat"]}
-          geometry={nodes.white.geometry}
-        />
-        <mesh
-          name="barberpole"
-          material={materials["barberpole.mat"]}
-          geometry={nodes.barberpole.geometry}
-        />
-        <mesh
-          name="barbershopsign"
-          material={materials["barbershopsign.mat"]}
-          geometry={nodes.barbershopsign.geometry}
-          rotation={[0, 0, 0]}
-          scale={[1.166, 1.166, 1.166]}
-        />
-        <mesh
-          name="billboard"
-          material={materials["billboard.mat"]}
-          geometry={nodes.billboard.geometry}
-        />
-        <mesh
-          name="overhang"
-          material={materials["overhang.mat"]}
-          geometry={nodes.overhang.geometry}
-        />
-        <mesh
-          name="address"
-          material={materials["address.1"]}
-          geometry={nodes.address.geometry}
-          scale={[1.4571, 1.0129, 1.0125]}
-        />
-        <mesh
-          name="open"
-          material={materials.open}
-          geometry={nodes.open.geometry}
-          scale={[0.9187, 0.6387, 0.6384]}
+          name="building"
+          material={tileMat}
+          geometry={nodes.building.geometry}
         />
         <mesh
           name="street"

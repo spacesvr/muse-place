@@ -31,7 +31,7 @@ type GLTFResult = GLTF & {
 };
 
 const CONTENT_FOLDER = "https://d27rt3a60hh1lx.cloudfront.net";
-const FILE_URL = `${CONTENT_FOLDER}/models/C2ABuilding-1613815933/building_01.glb`;
+const FILE_URL = `${CONTENT_FOLDER}/models/C2ABuilding-1613902614/building_02.glb`;
 
 const InstancedBuildingPiece = (props: {
   material: Material;
@@ -66,15 +66,15 @@ const Buildings = (props: GroupProps) => {
 
   const light = useTexture(`${CONTENT_FOLDER}/content/c2a/bricks/light.jpg`);
   light.wrapS = light.wrapT = THREE.RepeatWrapping;
-  light.repeat.x = light.repeat.y = 16;
+  light.repeat.x = light.repeat.y = 20;
 
   const ao = useTexture(`${CONTENT_FOLDER}/content/c2a/bricks/ao.jpg`);
   ao.wrapS = ao.wrapT = THREE.RepeatWrapping;
-  ao.repeat.x = ao.repeat.y = 16;
+  ao.repeat.x = ao.repeat.y = 20;
 
   const dark = useTexture(`${CONTENT_FOLDER}/content/c2a/bricks/dark.jpg`);
   dark.wrapS = dark.wrapT = THREE.RepeatWrapping;
-  dark.repeat.x = dark.repeat.y = 16;
+  dark.repeat.x = dark.repeat.y = 20;
 
   const lightMat = useMemo(
     () =>

@@ -11,8 +11,8 @@ import { DRACO_URL } from "spacesvr";
 
 type GLTFResult = GLTF & {
   nodes: {
-    light: THREE.Mesh;
     dark: THREE.Mesh;
+    light: THREE.Mesh;
     lattice: THREE.Mesh;
     stairs: THREE.Mesh;
     windows: THREE.Mesh;
@@ -27,7 +27,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/C2ABuilding-1613815933/building_01.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/C2ABuilding-1613902614/building_02.glb";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
@@ -36,34 +36,40 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
     <group ref={group} {...props} dispose={null}>
       <group scale={[0.35, -0.35, -0.35]}>
         <mesh
-          name="light"
-          material={nodes.light.material}
-          geometry={nodes.light.geometry}
-        />
-        <mesh
           name="dark"
           material={nodes.dark.material}
           geometry={nodes.dark.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
+        />
+        <mesh
+          name="light"
+          material={nodes.light.material}
+          geometry={nodes.light.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
         />
         <mesh
           name="lattice"
           material={materials["lattice.mat"]}
           geometry={nodes.lattice.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
         />
         <mesh
           name="stairs"
           material={materials["stairs.mat"]}
           geometry={nodes.stairs.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
         />
         <mesh
           name="windows"
           material={materials["windows.mat"]}
           geometry={nodes.windows.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
         />
         <mesh
           name="glass"
           material={materials["glass.mat"]}
           geometry={nodes.glass.geometry}
+          scale={[0.8432, -0.8432, 0.8432]}
         />
       </group>
     </group>

@@ -36,48 +36,48 @@ export const INSTANCE_DATA: (() => Object3D)[] = [
     obj.position.set(10.1, 0, 0);
     return obj;
   },
-  // east of barbershop 1
+  // west of barbershop 1
   () => {
     const obj = initialObject();
     flip(obj);
     obj.position.set(-19, 0, 1);
     return obj;
   },
-  // east of barbershop 2
+  // west of barbershop 2
   () => {
     const obj = initialObject();
-    obj.position.set(-19, 0, 10.5);
+    obj.position.set(-19, 0, 10.35);
     return obj;
   },
   // opposite barbershop 1
   () => {
     const obj = initialObject();
     faceNorth(obj);
-    obj.position.set(0, 0, 11);
+    obj.position.set(0, 0.1, 10.25);
     return obj;
   },
   // opposite barbershop 2
   () => {
     const obj = initialObject();
     faceNorth(obj);
-    obj.position.set(-9.5, 0, 11);
+    obj.position.set(-9.5, 0.1, 10.25);
     return obj;
   },
   // opposite barbershop 3
   () => {
     const obj = initialObject();
     faceNorth(obj);
-    obj.position.set(9.6, 0, 11);
+    obj.position.set(9.6, 0.1, 10.25);
     return obj;
   },
-  // west of barbershop 1
+  // east of barbershop 1
   () => {
     const obj = initialObject();
     faceWest(obj);
     obj.position.set(19, 0, 1);
     return obj;
   },
-  // west of barbershop 2
+  // east of barbershop 2
   () => {
     const obj = initialObject();
     faceWest(obj);
