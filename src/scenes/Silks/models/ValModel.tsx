@@ -6,7 +6,7 @@ import * as THREE from "three";
 import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-import { useAnimations } from "@react-three/drei/useAnimations";
+import { useAnimations } from "@react-three/drei";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACO_URL } from "spacesvr";
 
