@@ -54,12 +54,17 @@ const TopSelection = styled.button`
 
   & > h1 {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-family: "HelveticaBlk", sans-serif;
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    border-radius: 5px;
 
     @media screen and (max-width: 700px) {
       font-size: 2rem;
@@ -72,12 +77,12 @@ const TopSelection = styled.button`
     height: 100%;
     object-fit: cover;
     object-position: center 40%;
-    filter: blur(3px) brightness(0.6);
+    filter: brightness(0.3);
     transition: filter 0.15s linear;
     transform: scale(1.1);
 
     &:hover {
-      filter: blur(1px) brightness(0.8);
+      filter: brightness(0.6);
     }
   }
 `;
@@ -93,8 +98,6 @@ const BottomSelection = styled(TopSelection)`
 const global = css`
   @font-face {
     font-family: "HelveticaBlk";
-    src: url("https://d27rt3a60hh1lx.cloudfront.net/content/c2a
-/fonts/HelveticaLTStd-Blk.otf")
       format("opentype");
   }
 
@@ -124,7 +127,7 @@ const Landing = () => {
         }
       >
         <img src={`${CONTENT_FOLDER}/yellow-green-durag.jpg`} />
-        <h1>2D Shop</h1>
+        <h1>Go to 2D Shop</h1>
       </TopSelection>
       <BottomSelection
         onClick={() => (window.location.href = "/silksbyvp/world")}
@@ -132,7 +135,7 @@ const Landing = () => {
         <video autoPlay muted playsInline loop>
           <source type="video/mp4" src={`${CONTENT_FOLDER}/gameplay.mp4`} />
         </video>
-        <h1>3D World & Shop</h1>
+        <h1>Go to 3D Shop</h1>
       </BottomSelection>
     </Container>
   );

@@ -2,6 +2,7 @@ import { Text } from "@react-three/drei";
 import { isMobile } from "react-device-detect";
 import { useContext } from "react";
 import { ShopContext } from "../../../index";
+import FacePlayer from "../../../modifiers/FacePlayer";
 
 const Control = () => {
   const { cart } = useContext(ShopContext);
@@ -19,22 +20,24 @@ const Control = () => {
   return (
     <group position={[0, numY, 0]}>
       <group scale={[numScale, numScale, numScale]}>
-        <mesh position={[0, 0.3, -0.05]}>
-          <planeBufferGeometry args={[cartPanelWidth, 2.5]} />
-          <meshStandardMaterial color="red" transparent opacity={0.8} />
-        </mesh>
-        {/* @ts-ignore */}
-        <Text fontSize={0.9} position-y={0.15} anchorY={"bottom"}>
-          {cartStatus}
-        </Text>
-        {/* @ts-ignore */}
-        <Text fontSize={0.5} position-y={0.2} anchorY="top">
-          {cart.count == 0 ? "" : instructions}
-        </Text>
-        {/* @ts-ignore */}
-        <Text fontSize={0.35} position-y={-0.45} anchorY="top">
-          {"Silks by VP © 2021"}
-        </Text>
+        <FacePlayer>
+          <mesh position={[0, 0.3, -0.05]}>
+            <planeBufferGeometry args={[cartPanelWidth, 2.5]} />
+            <meshStandardMaterial color="red" transparent opacity={0.8} />
+          </mesh>
+          {/* @ts-ignore */}
+          <Text fontSize={0.9} position-y={0.15} anchorY={"bottom"}>
+            {cartStatus}
+          </Text>
+          {/* @ts-ignore */}
+          <Text fontSize={0.5} position-y={0.2} anchorY="top">
+            {cart.count == 0 ? "" : instructions}
+          </Text>
+          {/* @ts-ignore */}
+          <Text fontSize={0.35} position-y={-0.45} anchorY="top">
+            {"Silks by VP © 2021"}
+          </Text>
+        </FacePlayer>
       </group>
     </group>
   );

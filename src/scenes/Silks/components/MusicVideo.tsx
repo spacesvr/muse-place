@@ -2,7 +2,7 @@ import { Video } from "spacesvr";
 
 const CONTENT_URL = `https://d27rt3a60hh1lx.cloudfront.net/content/silksbyvp`;
 const VIDEO_URL = `https://d27rt3a60hh1lx.cloudfront.net/content/silksbyvp/video.mp4`;
-const VIDEO_SCALE = 2.51;
+const VIDEO_SCALE = 2.25;
 const SAKTE_VIDEO_SCALE = 1.25;
 
 const MusicVideo = () => {

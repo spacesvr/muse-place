@@ -1,11 +1,14 @@
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useContext, useRef, useState } from "react";
 import MichaelModel from "../../models/MichaelModel";
 import { Group } from "three";
 import { useFrame } from "react-three-fiber";
 import WhatsUp from "./dialogue/WhatsUp";
+import { SilksContext } from "../../index";
+import GiveCode from "./dialogue/GiveCode";
 
 const Michael = () => {
   const group = useRef<Group>();
+  const { giveCode } = useContext(SilksContext);
 
   const [talk, setTalk] = useState(false);
 
@@ -25,13 +28,18 @@ const Michael = () => {
     <group
       ref={group}
       name="michael"
-      position={[-9.25, 0, 5.12]}
+      position={[-9.1, 0, 5.12]}
       rotation-y={Math.PI}
     >
       <Suspense fallback={null}>
         <MichaelModel />
       </Suspense>
-      {talk && <WhatsUp position={[0.5, 0, 0.1]} rotation-y={-Math.PI / 4} />}
+      {talk && !giveCode && (
+        <WhatsUp position={[0.5, 0, 0.1]} rotation-y={-Math.PI / 4} />
+      )}
+      {talk && giveCode && (
+        <GiveCode position={[0.5, 0, 0.1]} rotation-y={-Math.PI / 4} />
+      )}
     </group>
   );
 };
