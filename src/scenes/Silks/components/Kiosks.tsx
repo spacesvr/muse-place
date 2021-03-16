@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import PinkWhiteDurag from "../models/PinkWhiteDurag";
-import PinkGreenDurag from "../models/PinkGreenDurag";
+import YellowGreenDurag from "../models/YellowGreenDurag";
+import BlueYellowDurag from "../models/BlueYellowDurag";
 import Spinning from "../modifiers/Spinning";
 import Kiosk from "./Kiosk";
 import { Preload } from "@react-three/drei";
@@ -16,7 +16,7 @@ export default function Kiosks() {
           name="pink-green-durag"
         >
           <Spinning>
-            <PinkGreenDurag />
+            <BlueYellowDurag />
           </Spinning>
         </Kiosk>
       </Suspense>
@@ -28,7 +28,7 @@ export default function Kiosks() {
           name="pink-white-durag"
         >
           <Spinning>
-            <PinkWhiteDurag />
+            <YellowGreenDurag />
           </Spinning>
         </Kiosk>
       </Suspense>
