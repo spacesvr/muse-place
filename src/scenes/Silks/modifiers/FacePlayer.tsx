@@ -17,7 +17,10 @@ const FacePlayer = (props: Props) => {
 
   const group = useRef<Group>();
   const limiter = useLimiter(60);
-  const [spring, setSpring] = useSpring(() => ({ xyz: [0, 0, 0] }));
+  const [spring, setSpring] = useSpring(() => ({
+    xyz: [0, 0, 0],
+    precision: 0.00001,
+  }));
 
   useFrame(({ clock, camera }) => {
     if (!limiter.isReady(clock)) return;
