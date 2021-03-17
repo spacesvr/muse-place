@@ -40,7 +40,6 @@ const Sittable = (props: Props) => {
         for (const box of boxes.current) {
           if (box.intersectsSphere(sphere.current)) {
             setSit(true);
-            console.log("detected!");
           }
         }
       }

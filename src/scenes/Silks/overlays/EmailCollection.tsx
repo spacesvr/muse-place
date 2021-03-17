@@ -1,6 +1,6 @@
 import { useEnvironment } from "spacesvr";
 import Overlay from "../modifiers/Overlay";
-import { useContext, useLayoutEffect, useState } from "react";
+import { useCallback, useContext, useLayoutEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { SilksContext } from "../index";
 
@@ -14,7 +14,7 @@ const Darker = styled.div`
   z-index: 10;
 `;
 
-const Container = styled.div`
+const Container = styled.form`
   width: 95%;
   max-width: 500px;
 
@@ -63,6 +63,13 @@ export default function EmailCollection() {
   const { paused, overlay, setPaused } = useEnvironment();
   const { setGiveCode } = useContext(SilksContext);
 
+  const [value, setValue] = useState("");
+
+  const submitEmail = useCallback(() => {
+    // @ts-ignore
+    window._learnq.push(["identify", { $email: value }]);
+  }, [value]);
+
   if (!paused || overlay !== "emailcollection") {
     return null;
   }
@@ -72,11 +79,18 @@ export default function EmailCollection() {
       <Darker>
         <Container>
           <h3>Be first in line for Silks by VP drops</h3>
-          <input type="email" placeholder="Enter email" />
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
           <div>
             <YesButton
+              type="submit"
               onClick={() => {
                 setGiveCode(true);
+                submitEmail();
                 setPaused(false);
               }}
             >

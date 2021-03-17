@@ -122,9 +122,7 @@ const Landing = () => {
         <img src={`${CONTENT_FOLDER}/silksbyvp.gif`} />
       </Middle>
       <TopSelection
-        onClick={() =>
-          window.open("https://silks-by-vp.myshopify.com/", "_blank")
-        }
+        onClick={() => window.open("https://shop.silksbyvp.com/", "_blank")}
       >
         <img src={`${CONTENT_FOLDER}/yellow-green-durag.jpg`} />
         <h1>Go to 2D Shop</h1>
