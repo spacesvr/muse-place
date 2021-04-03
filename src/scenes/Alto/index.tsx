@@ -2,18 +2,19 @@ import { Fog, StandardEnvironment } from "spacesvr";
 import * as THREE from "three";
 import { Sky, Stars } from "@react-three/drei";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, Suspense } from "react";
 import { Audio, AudioAnalyser, DoubleSide, Vector3 } from "three";
 import Alto, { AltoProps } from "themes/Alto";
 import Lighting from "themes/Alto/components/Lighting";
 import Dropoff from "themes/Alto/components/Dropoff";
-import { HDRI } from "themes/components/HDRBackground";
+import { HDRI } from "spacesvr";
 
 export type AltoSceneProps = {
   stars?: boolean;
   fog?: [string, number, number];
   skyColor?: string;
   children?: ReactNode;
+  hdri?: string;
 } & Partial<AltoProps>;
 
 type AltoSceneStore = {
@@ -23,7 +24,7 @@ type AltoSceneStore = {
 export const AltoSceneState = React.createContext({} as AltoSceneStore);
 
 const AltoScene = (props: AltoSceneProps) => {
-  const { stars, fog, skyColor, children, ...restProps } = props;
+  const { stars, fog, skyColor, children, hdri, ...restProps } = props;
 
   const [aa, setAA] = useState<THREE.AudioAnalyser>();
 
@@ -48,12 +49,10 @@ const AltoScene = (props: AltoSceneProps) => {
             />
           </mesh>
         )}
-        <Sky sunPosition={[0, 1, -1]} />
-        <HDRI src="https://d27rt3a60hh1lx.cloudfront.net/content/alto/SkyMural3.hdr" />
+        {hdri ? <HDRI src={hdri} /> : <Sky sunPosition={[0, 1, -1]} />}
         <Alto {...restProps} />
         <Lighting />
         <Dropoff />
-
         {/* @ts-ignore */}
         {children && React.cloneElement(children, { aa })}
       </AltoSceneState.Provider>

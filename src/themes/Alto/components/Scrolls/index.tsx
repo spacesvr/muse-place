@@ -26,6 +26,7 @@ const Scrolls = (props: ScrollsProps) => {
           position={scroll.position}
           rotation-y={scroll.rotationY}
           key={scroll.img}
+          name={scroll.name}
         />
       ))}
     </group>
