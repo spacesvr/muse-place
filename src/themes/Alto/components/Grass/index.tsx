@@ -11,7 +11,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { grassFrag, grassUniforms, grassVert } from "./shaders/grass";
 import SimplexNoise from "simplex-noise";
 import cache1 from "./cache/cache1";
-import { useLimiter } from "../../../../scenes/Silks/utils/limiter";
+import { useLimiter } from "spacesvr";
 
 const COUNT = 20000;
 const MIN_RADIUS = 10;
