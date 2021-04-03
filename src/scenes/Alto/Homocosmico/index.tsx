@@ -130,13 +130,13 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
-                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
                   maxWidth={0.9}
                   fontSize={0.075}
                   color="black"
+                  animations={[]}
                 >
                   {texts[ind]}
                 </Text>
@@ -157,13 +157,13 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
-                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
                   maxWidth={0.9}
                   fontSize={0.075}
                   color="black"
+                  animations={[]}
                 >
                   {texts[ind] + 4}
                 </Text>
@@ -184,13 +184,13 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
-                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
                   maxWidth={0.9}
                   fontSize={0.075}
                   color="black"
+                  animations={[]}
                 >
                   {texts[ind + 10]}
                 </Text>
