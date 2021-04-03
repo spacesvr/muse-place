@@ -130,6 +130,7 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
+                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
@@ -156,6 +157,7 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
+                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
@@ -182,6 +184,7 @@ function Images() {
                 <meshStandardMaterial color="white" />
               </mesh>
               <group position-z={0.06}>
+                {/*ts-ignore*/}
                 <Text
                   anchorX="center"
                   anchorY="middle"
