@@ -1,7 +1,6 @@
 import { Vector2 } from "three";
 import { extend } from "react-three-fiber";
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
+
 import { shaderMaterial } from "@react-three/drei";
 
 const CrazyMaterial = shaderMaterial(
@@ -9,7 +8,7 @@ const CrazyMaterial = shaderMaterial(
     resolution: new Vector2(2000, 2000),
     time: 0,
   },
-  glsl`
+  `
   varying vec2 vUv;
   void main() {
     vUv = uv;
@@ -17,7 +16,7 @@ const CrazyMaterial = shaderMaterial(
       * modelViewMatrix 
       * vec4( position, 1.0 );
   }`,
-  glsl`
+  `
   varying vec2 vUv;
   uniform float time;
   uniform vec2 resolution;

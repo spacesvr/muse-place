@@ -12,7 +12,6 @@ export type GothamSceneProps = {
   night?: boolean;
   children?: ReactNode;
   audio?: string;
-  coupon?: string;
 } & GothamProps;
 
 export default function GothamScene(props: GothamSceneProps) {

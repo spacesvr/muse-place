@@ -1,7 +1,4 @@
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
-
-export const vert = glsl`
+export const vert = `
     attribute vec2 reference;
     attribute float birdVertex;
 
@@ -65,7 +62,7 @@ export const vert = glsl`
     }
 `;
 
-export const frag = glsl`
+export const frag = `
     varying vec4 vColor;
     varying float z;
 

@@ -10,6 +10,8 @@ import AudioReactive from "./components/AudioReactive";
 import { ScrollData } from "./types/scroll";
 import { Fog } from "spacesvr";
 import { Preload } from "@react-three/drei";
+import FBPixel from "../components/FacebookPixel";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 export type AltoProps = {
   socials: string[];
@@ -30,6 +32,8 @@ export type AltoProps = {
   fontSize: number;
   aa?: AudioAnalyser;
   setAA?: (aa: AudioAnalyser) => void;
+  fbPixel?: string;
+  googleAnalytics?: string;
 };
 
 export const AltoContext = React.createContext<AltoProps>({} as AltoProps);
@@ -53,6 +57,8 @@ const defaultContext: AltoProps = {
 };
 
 const Alto = (props: Partial<AltoProps>) => {
+  const { fbPixel, googleAnalytics } = props;
+
   const [scrollCount, setScrollCount] = useState(0);
 
   return (
@@ -69,6 +75,8 @@ const Alto = (props: Partial<AltoProps>) => {
       <Birds />
       <Tablatures scrolls={scrollCount} />
       <AudioReactive position={[0, 11, 0]} />
+      <FBPixel code={fbPixel} />
+      <GoogleAnalytics code={googleAnalytics} />
     </AltoContext.Provider>
   );
 };

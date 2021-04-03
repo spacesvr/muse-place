@@ -1,6 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withPlugins = require("next-compose-plugins");
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const transpileModules = require("next-transpile-modules")([
   "three",
   "drei",
@@ -13,4 +11,14 @@ module.exports = {
   ...withPlugins([transpileModules]),
   experimental: { reactMode: "concurrent" },
   reactStrictMode: true,
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.node = {
+        fs: "empty",
+      };
+    }
+
+    return config;
+  },
 };

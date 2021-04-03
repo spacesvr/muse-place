@@ -1,7 +1,4 @@
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
-
-export const vert = glsl`
+export const vert = `
     attribute float seed;
     attribute vec3 color;
     
@@ -24,7 +21,7 @@ export const vert = glsl`
     }
 `;
 
-export const frag = glsl`
+export const frag = `
   uniform float time;
   uniform vec3 fogColor;
   

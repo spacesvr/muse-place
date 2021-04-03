@@ -1,6 +1,5 @@
 import { Interactable } from "spacesvr";
 import { Suspense } from "react";
-import { Vector3 } from "three";
 
 import Instagram from "./models/Instagram";
 import Twitter from "./models/Twitter";
@@ -15,7 +14,7 @@ type SocialProps = {
   link: string;
 } & GroupProps;
 
-const Index = (props: SocialProps) => {
+export default function SocialButton(props: SocialProps) {
   const { link, ...restProps } = props;
 
   const lowerLink = link.toLowerCase();
@@ -47,6 +46,4 @@ const Index = (props: SocialProps) => {
       </Suspense>
     </group>
   );
-};
-
-export default Index;
+}

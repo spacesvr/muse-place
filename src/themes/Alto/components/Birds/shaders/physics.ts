@@ -1,8 +1,5 @@
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
-
 // position
-export const frag = glsl`
+export const frag = `
     uniform float time;
     uniform float delta;
     
@@ -25,7 +22,7 @@ export const frag = glsl`
 `;
 
 // velocity
-export const vert = glsl`
+export const vert = `
     uniform float time;
     uniform float testing;
     uniform float delta; // about 0.016

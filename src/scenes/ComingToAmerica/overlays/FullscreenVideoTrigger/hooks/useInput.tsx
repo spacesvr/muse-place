@@ -2,9 +2,9 @@ import { useState } from "react";
 
 function useInput() {
   // reduce bloat of watching inputs for changes.
-  let [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
-  let onChange = function (event: any) {
+  const onChange = function (event: any) {
     setValue(event.target.value);
   };
 

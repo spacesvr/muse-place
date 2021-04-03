@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { ScrollData } from "../themes/Alto/types/scroll";
+import { ScrollData } from "themes/Alto/types/scroll";
 
 const Alto = dynamic(import("scenes/Alto"), { ssr: false });
 const LucidMonday = dynamic(import("scenes/Alto/LucidMonday"), { ssr: false });
