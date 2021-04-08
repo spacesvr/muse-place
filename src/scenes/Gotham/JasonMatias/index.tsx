@@ -212,13 +212,13 @@ export default function JasonMatias() {
           <Image
             framed
             size={1.25}
-            src="https://d27rt3a60hh1lx.cloudfront.net/images/placeholder-10x3.jpg"
+            src={`${CONTENT_FOLDER}/MolokaiPano.jpg`}
             position-x={-2}
           />
           <Image
             framed
             size={1.25}
-            src="https://d27rt3a60hh1lx.cloudfront.net/images/placeholder-10x3.jpg"
+            src={`${CONTENT_FOLDER}/HawaiiWave3.jpeg`}
           />
         </group>
         <Image
