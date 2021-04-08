@@ -36,7 +36,7 @@ const Tablatures = (props: Props) => {
       >
         <group position-y={-0.05}>
           {/* @ts-ignore */}
-          <Text {...textStyles} textAlign="justify">
+          <Text {...textStyles} textAlign="center">
             {title}
           </Text>
           {/* @ts-ignore */}
@@ -44,7 +44,7 @@ const Tablatures = (props: Props) => {
             {...textStyles}
             fontSize={0.113 * fontSize}
             position-y={-0.31}
-            textAlign="justify"
+            textAlign="center"
           >
             {body}
           </Text>

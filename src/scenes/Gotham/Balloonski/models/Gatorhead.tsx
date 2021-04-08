@@ -10,90 +10,28 @@ import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
 type GLTFResult = GLTF & {
   nodes: {
-    ["201111_Ballonski001"]: THREE.Mesh;
-    ["201111_Ballonski001_1"]: THREE.Mesh;
-    ["201111_Ballonski001_2"]: THREE.Mesh;
-    Sphere: THREE.Mesh;
-    Sphere001: THREE.Mesh;
+    gator: THREE.Mesh;
   };
   materials: {
-    green: THREE.MeshStandardMaterial;
-    white: THREE.MeshStandardMaterial;
-    orange: THREE.MeshStandardMaterial;
-    Material: THREE.MeshStandardMaterial;
+    ["gator.mat"]: THREE.MeshStandardMaterial;
   };
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/gatorhead-1617166028/gatorhead.glb.gz";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/gatorhead-1617845675/gatorhead.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
   return (
     <group ref={group} {...props} dispose={null}>
-      <group>
-        <group name="RootNode" scale={[0.001, 0.001, 0.001]}>
-          <group
-            name="Light"
-            position={[407.2622, 599.4016, 559.2383]}
-            rotation={[1.8901, 0.8806, -2.0452]}
-            scale={[100, 100, 100]}
-          />
-          <group
-            name="Camera"
-            position={[0, 495.831, 1213.1794]}
-            rotation={[-1.5225, 1.5637, 1.1531]}
-            scale={[81.6664, 95.7933, 76.4576]}
-          />
-          <group
-            name="Light001"
-            position={[-462.1301, 574.3262, -6.8514]}
-            rotation={[1.8901, 0.8806, -2.0452]}
-            scale={[100, 100, 100]}
-          />
-          <group
-            name="Light002"
-            position={[172.0295, -63.5821, -412.0181]}
-            rotation={[1.8901, 0.8806, -2.0452]}
-            scale={[100, 100, 100]}
-          />
-          <group
-            name="Light003"
-            position={[-36.4099, 106.127, 798.2613]}
-            rotation={[1.8901, 0.8806, -2.0452]}
-            scale={[100, 100, 100]}
-          />
-          <group name="201111_Ballonski" scale={[100, 100, 100]}>
-            <mesh
-              name="201111_Ballonski001"
-              material={materials.green}
-              geometry={nodes["201111_Ballonski001"].geometry}
-            />
-            <mesh
-              name="201111_Ballonski001_1"
-              material={materials.white}
-              geometry={nodes["201111_Ballonski001_1"]?.geometry}
-            />
-            <mesh
-              name="201111_Ballonski001_2"
-              material={materials.orange}
-              geometry={nodes["201111_Ballonski001_2"]?.geometry}
-            />
-          </group>
-          <mesh
-            name="Sphere"
-            material={materials.Material}
-            geometry={nodes.Sphere.geometry}
-            scale={[100, 100, 100]}
-          />
-          <mesh
-            name="Sphere001"
-            material={materials.Material}
-            geometry={nodes.Sphere001.geometry}
-            scale={[100, 100, 100]}
-          />
-        </group>
+      <group rotation-y={0.88}>
+        <mesh
+          name="gator"
+          material={materials["gator.mat"]}
+          geometry={nodes.gator.geometry}
+          rotation={[0, 0, 0]}
+        />
       </group>
     </group>
   );

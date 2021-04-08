@@ -1,5 +1,7 @@
 import { Floating, Image } from "spacesvr";
 import { Text } from "@react-three/drei";
+import { Perf } from "r3f-perf";
+import Artwork from "./components/Artwork";
 
 const NUM_IMAGES = 30;
 const RADIUS = 32;
@@ -102,13 +104,13 @@ const texts = [
 function Images() {
   const insideUrls = new Array(4)
     .fill("")
-    .map((_, ind) => `${FOLDER}/dreams/Dream N°${ind + 1}.jpg`);
+    .map((_, ind) => `${FOLDER}/dreams2/Dream N°${ind + 1}-min.jpg`);
   const middleUrls = new Array(6)
     .fill("")
-    .map((_, ind) => `${FOLDER}/dreams/Dream N°${ind + 5}.jpg`);
+    .map((_, ind) => `${FOLDER}/dreams2/Dream N°${ind + 5}-min.jpg`);
   const outsideUrls = new Array(20)
     .fill("")
-    .map((_, ind) => `${FOLDER}/dreams/Dream N°${ind + 11}.jpg`);
+    .map((_, ind) => `${FOLDER}/dreams2/Dream N°${ind + 11}-min.jpg`);
 
   console.log(outsideUrls);
 
@@ -124,84 +126,70 @@ function Images() {
       {insideUrls.map((url, ind) => (
         <group rotation-y={insideRot(ind + 1)} key={ind}>
           <group position={[0, 7.5, -3]}>
-            <group position-x={1.5}>
-              <mesh>
-                <boxBufferGeometry args={[1, 1.75, 0.1]} />
-                <meshStandardMaterial color="white" />
-              </mesh>
-              <group position-z={0.06}>
-                <Text
-                  anchorX="center"
-                  anchorY="middle"
-                  maxWidth={0.9}
-                  fontSize={0.075}
-                  color="black"
-                  animations={[]}
-                >
-                  {texts[ind]}
-                </Text>
-              </group>
+            <group position-x={1.35}>
+              <Text
+                anchorX="center"
+                anchorY="middle"
+                maxWidth={0.9}
+                fontSize={0.075}
+                color="black"
+                animations={[]}
+              >
+                {texts[ind]}
+              </Text>
             </group>
-            <Floating>
-              <Image src={url} size={2} framed />
-            </Floating>
+            <Image src={url} size={2} />
           </group>
         </group>
       ))}
       {middleUrls.map((url, ind) => (
         <group rotation-y={-middleRot(ind + 1)} key={ind + 4}>
           <group rotation-y={-Math.PI} position={[0, 5.5, -12]}>
-            <group position-x={1.5}>
-              <mesh>
-                <boxBufferGeometry args={[1, 1.75, 0.1]} />
-                <meshStandardMaterial color="white" />
-              </mesh>
-              <group position-z={0.06}>
-                <Text
-                  anchorX="center"
-                  anchorY="middle"
-                  maxWidth={0.9}
-                  fontSize={0.075}
-                  color="black"
-                  animations={[]}
-                >
-                  {texts[ind] + 4}
-                </Text>
-              </group>
+            <group position-x={1.35}>
+              <Text
+                anchorX="center"
+                anchorY="middle"
+                maxWidth={0.9}
+                fontSize={0.075}
+                color="black"
+                animations={[]}
+              >
+                {texts[ind + 4]}
+              </Text>
             </group>
-            <Floating>
-              <Image src={url} size={2} framed />
-            </Floating>
+            <Image src={url} size={2} />
           </group>
         </group>
       ))}
       {outsideUrls.map((url, ind) => (
         <group rotation-y={outsideRot(ind + 1)} key={ind + 10}>
           <group position={[0, 1.5, -RADIUS]}>
-            <group position-x={1.5}>
-              <mesh>
-                <boxBufferGeometry args={[1, 1.75, 0.1]} />
-                <meshStandardMaterial color="white" />
-              </mesh>
-              <group position-z={0.06}>
-                <Text
-                  anchorX="center"
-                  anchorY="middle"
-                  maxWidth={0.9}
-                  fontSize={0.075}
-                  color="black"
-                  animations={[]}
-                >
-                  {texts[ind + 10]}
-                </Text>
-              </group>
+            <group position-x={1.35}>
+              <Text
+                anchorX="center"
+                anchorY="middle"
+                maxWidth={0.9}
+                fontSize={0.075}
+                color="black"
+                animations={[]}
+              >
+                {texts[ind + 10]}
+              </Text>
             </group>
-            <Floating>
-              <Image src={url} size={2} framed />
-            </Floating>
+            <Image src={url} size={2} />
           </group>
         </group>
       ))}
+      <group rotation-y={Math.PI / 2 - 0.105}>
+        <Artwork count={20} />
+      </group>
+      <group rotation-y={Math.PI / 4 - 0.05}>
+        <Artwork count={6} />
+      </group>
+      <group rotation-y={Math.PI / 6 - 0.075}>
+        <Artwork count={4} />
+      </group>
+      {/*<Perf />*/}
     </group>
   );
 }
