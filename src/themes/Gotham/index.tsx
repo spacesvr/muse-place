@@ -1,14 +1,18 @@
 import { Suspense, useMemo } from "react";
 import Structure from "./models/Structure";
 import StructureOpen from "./models/StructureOpen";
-import { Interactable } from "spacesvr";
 import { Preload, Text } from "@react-three/drei";
 import Artwork from "../components/Artwork";
 import { ArtworkProps } from "../components/Artwork";
 import { linkPositions } from "./assets/constants";
 import { MeshStandardMaterial } from "three";
 import SocialLinks from "../components/SocialLinks";
-import EmailCollection from "./overlays/EmailCollection";
+import EmailCollection, {
+  EmailCollectionProps,
+} from "./overlays/EmailCollection";
+import Credits from "./components/Credits";
+import FBPixel from "../components/FacebookPixel";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 export type GothamProps = {
   name: string;
@@ -16,14 +20,29 @@ export type GothamProps = {
   open?: boolean;
   artwork?: ArtworkProps["artwork"];
   night?: boolean;
-  emailCollection?: boolean;
+  emailCollection?: EmailCollectionProps;
+  premium?: boolean;
+  fbPixel?: string;
+  googleAnalytics?: string;
+  coupon?: string;
 };
 
 const FONT =
   "https://use.typekit.net/af/6d4bb2/00000000000000003b9acafc/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3";
 
 export default function Gotham(props: GothamProps) {
-  const { name, socials, artwork, open, night, emailCollection } = props;
+  const {
+    name,
+    socials,
+    artwork,
+    open,
+    night,
+    emailCollection,
+    premium,
+    fbPixel,
+    googleAnalytics,
+    coupon,
+  } = props;
 
   const material = useMemo(
     () =>
@@ -37,7 +56,12 @@ export default function Gotham(props: GothamProps) {
 
   return (
     <group name="gotham-theme">
-      {emailCollection && <EmailCollection name={name} />}
+      {emailCollection && (
+        <EmailCollection
+          title={`Sign up to receive updates${name && ` from ${name}`}!`}
+          {...emailCollection}
+        />
+      )}
       <Preload all />
       <ambientLight intensity={1} />
       <Suspense fallback={null}>
@@ -56,30 +80,24 @@ export default function Gotham(props: GothamProps) {
         </Text>
         <SocialLinks position={[0, -0.85, 0.31]} socials={socials} />
       </group>
+      {!premium && <Credits night={night} />}
       <group position={[2.49, 0.165, 3.2]} rotation={[0, -Math.PI / 2, 0]}>
-        {/* @ts-ignore */}
-        <Text anchorY="middle" fontSize={0.15} material={material} font={FONT}>
-          MADE BY MUSE{"      "}|
-        </Text>
-        <Interactable
-          onClick={() =>
-            (window.location.href = "https://musevr.typeform.com/to/yjALZqVp")
-          }
-        >
-          <group position-x={1.8}>
-            {/* @ts-ignore */}
-            <Text
-              anchorY="middle"
-              fontSize={0.15}
-              material={material}
-              font={FONT}
-            >
-              Want Your Own? Click Here
-            </Text>
-          </group>
-        </Interactable>
+        {coupon && (
+          /* @ts-ignore */
+          <Text
+            anchorY="middle"
+            fontSize={0.1}
+            material={material}
+            font={FONT}
+            position={[1.8, 0.2, 0]}
+          >
+            Use coupon code {coupon}
+          </Text>
+        )}
       </group>
       {artwork && <Artwork artwork={artwork} linkPositions={linkPositions} />}
+      <FBPixel code={fbPixel} />
+      <GoogleAnalytics code={googleAnalytics} />
     </group>
   );
 }

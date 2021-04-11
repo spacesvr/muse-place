@@ -7,8 +7,7 @@ import {
   Mesh,
   Object3D,
 } from "three";
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
+
 import { ReactNode, useLayoutEffect, useMemo, useRef } from "react";
 import { useFrame } from "react-three-fiber";
 import { useLimiter } from "../../../scenes/Silks/utils/limiter";
@@ -20,7 +19,7 @@ const uniforms = `
     varying vec3 vUv;
 `;
 
-const vert = glsl`
+const vert = `
     float y_factor = 1.0 + audio[int(vUv.t * bins)] / 255.0;
     float theta = sin( time + position.y * y_factor + audio[1] / 255.0 * 3.14 * 2.0 / 4.0 ) / 3.0;
     float c = cos( theta );
@@ -30,7 +29,7 @@ const vert = glsl`
     vNormal = vNormal * m;
 `;
 
-const frag = glsl`
+const frag = `
   gl_FragColor = vec4( packNormalToRGB( normal ), opacity );
   gl_FragColor.b = clamp((gl_FragColor.b) * 1.5, 0.0, 1.0);
   gl_FragColor.g = pow(clamp( gl_FragColor.g + 0.25, 0.0, 1.0 ), 8.);

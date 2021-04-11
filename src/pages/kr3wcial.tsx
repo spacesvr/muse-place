@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import DepthImage from "../themes/Gotham/components/DepthImage";
-import { GothamProps } from "../themes/Gotham";
+import DepthImage from "themes/Gotham/components/DepthImage";
+import { GothamProps } from "themes/Gotham";
 
 const Gotham = dynamic(import("scenes/Gotham"), { ssr: false });
 const Kr3wcial = dynamic(import("scenes/Gotham/Kr3wcial"), { ssr: false });

@@ -49,7 +49,7 @@ const FullscreenVideo = () => {
   const num = parseInt(overlay.split("-")[2], 10);
   const url = videos[id][num];
 
-  let onClick =
+  const onClick =
     videos[id].length > 1 ? () => setPaused(true, id) : () => setPaused(false);
 
   return (

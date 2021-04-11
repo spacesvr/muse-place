@@ -1,9 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { GothamProps } from "../themes/Gotham";
+import { ScrollData } from "themes/Alto/types/scroll";
 
-const Gotham = dynamic(import("scenes/Gotham"), { ssr: false });
+const Standard = dynamic(import("scenes/Alto"), { ssr: false });
+
 const ARTIST = {
   name: "Jackie",
   socials: [
@@ -13,25 +14,46 @@ const ARTIST = {
 };
 
 const url = `https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/jackieland`;
-const artwork: GothamProps["artwork"] = [
+const scrollData: ScrollData[] = [
   {
-    src: `${url}/1.mp4`,
+    img: `${url}/1.jpg`,
+    position: [15, -0.61, 30],
+    text:
+      "[Forbes 90 Under 90 award]\n" +
+      "Awards & Praise!\n" +
+      "Jackie LOVES compliments (who doesn’t) but especially in the form of an award! And if the award involved little to no work on her end, even better! Give her this fake award and she’ll be busy admiring herself in its glow.\n",
   },
   {
-    src: `${url}/2.mp4`,
+    img: `${url}/2.JPG`,
+    position: [-15, -0.61, 30],
+    text:
+      "[Cheese & Franco on green background]\n" +
+      "Jackie’s Cats! \n" +
+      "Mention you have a cat ONCE and Jackie will go on and on about her personal cat hellscape. Ask if little Cheese has smashed any family heirlooms today? Or if Franco has begged for food only to throw it all up in her shoes? You’ll be outta Jackieland in no time!\n",
   },
   {
-    src: `${url}/3.mp4`,
+    img: `${url}/3.jpg`,
+    position: [12.36, 1.21, -15.84],
+    text:
+      "[Money] \n" +
+      "Money! \n" +
+      "Jackie is money HUNGRY. Just bribe her and she’ll leave you alone forever!\n",
   },
   {
-    src: `${url}/4.mp4`,
-    audio: true,
+    img: `${url}/4.jpg`,
+    position: [-15, -1.13, -30],
+    text:
+      "[Chocolate Birthday cake]\n" +
+      "Jackie’s Birthday!\n" +
+      "Tell Jackie it’s her birthday! She looves her birthday and celebrates the whole month (yep, one of those). She’ll be so distracted eating cake and dancing, she won’t even notice you’re almost gone.\n",
   },
   {
-    src: `${url}/5.mp4`,
-  },
-  {
-    src: `${url}/6.mp4`,
+    img: `${url}/5.jpg`,
+    position: [30.52, -0.39, 0.97],
+    text:
+      "[Megaphone]\n" +
+      "Yelling!\n" +
+      "Jackie respects people who can shout louder than she does. In Jackieland, The loudest person in the room wins. And if the loudest person in the room isn’t Jackie, they will also be asked to leave—and now that’s YOU! \n",
   },
 ];
 
@@ -42,7 +64,7 @@ const LinkTree: NextPage = () => {
         <title>Jackie</title>
         <title>Land</title>
       </Head>
-      <Gotham artwork={artwork} socials={ARTIST.socials} name={ARTIST.name} />{" "}
+      <Standard scrollData={scrollData} socials={ARTIST.socials} />
     </>
   );
 };

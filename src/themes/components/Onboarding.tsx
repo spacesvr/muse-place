@@ -12,7 +12,7 @@ const Container = styled.div<{ paused: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 200;
+  z-index: 100;
   transition: opacity 0.25s ease;
   background: rgba(0, 0, 0, 0.5);
   display: flex;

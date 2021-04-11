@@ -55,7 +55,7 @@ const LiveChat = () => {
       },
       message: (msg: any) => {
         if (msg.message.text) {
-          let newMessages: Message[] = [];
+          const newMessages: Message[] = [];
           newMessages.push({
             uuid: msg.message.uuid,
             text: msg.message.text,
@@ -76,7 +76,7 @@ const LiveChat = () => {
         stringifiedTimeToken: true, // default false
       },
       (status: any, response: any) => {
-        let newMessages: Message[] = [];
+        const newMessages: Message[] = [];
         for (let i = 0; i < response.messages.length; i++) {
           newMessages.push({
             uuid: response.messages[i].entry.uuid,
@@ -105,7 +105,7 @@ const LiveChat = () => {
   // Sending messages via PubNub
   const publishMessage = () => {
     if (chatMessage.value) {
-      let messageObject = {
+      const messageObject = {
         text: chatMessage.value,
         uuid: username,
       };

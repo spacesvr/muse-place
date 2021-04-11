@@ -6,7 +6,7 @@ const NUM = 20;
 
 const Clouds = () => {
   const positions = useMemo(() => {
-    let poses = [];
+    const poses = [];
     for (let i = 0; i < NUM; i++) {
       const r = 50 + Math.random() * 70;
       const p = Math.PI / 2 - (Math.PI / 3) * Math.random();

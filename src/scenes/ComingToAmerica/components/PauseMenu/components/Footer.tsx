@@ -20,7 +20,7 @@ const Footer = () => {
     <>
       <Container>
         VR REALITY BY{" "}
-        <a href="https://muse.place/muse" target="_blank">
+        <a href="https://muse.place/muse" target="_blank" rel="noreferrer">
           MUSE.
         </a>
         <br />

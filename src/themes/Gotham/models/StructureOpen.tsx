@@ -21,7 +21,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Structure-1615802630/scene.glb.gz";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/StructureOpen-222/scene.glb";
 
 export default function Model(
   props: JSX.IntrinsicElements["group"] & {

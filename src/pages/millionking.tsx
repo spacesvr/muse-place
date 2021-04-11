@@ -44,7 +44,7 @@ const LinkTree: NextPage = () => {
         artwork={linkData}
         socials={ARTIST.socialLinks}
         name={ARTIST.name}
-        audio="https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/dustinking/JoJo.mp3"
+        audio="https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/dustinking/newmusic.mp3"
         night
       />
     </>

@@ -58,18 +58,17 @@ const NoButton = styled(YesButton)`
   background: gray;
 `;
 
-type Props = { name?: string };
+export type EmailCollectionProps = { title?: string; link?: string };
 
-export default function EmailCollection(props: Props) {
-  const { name } = props;
+export default function EmailCollection(props: EmailCollectionProps) {
+  const { title = "Sign up to receive updates!", link } = props;
 
   const [hasUnpaused, setHasUnpaused] = useState(false);
   const { paused, overlay, setPaused } = useEnvironment();
 
   useLayoutEffect(() => {
     if (!hasUnpaused && !paused) {
-      console.log("hello?");
-      setTimeout(() => setPaused(true, "emailcollection"), 5000);
+      setTimeout(() => setPaused(true, "emailcollection"), 25000);
       setHasUnpaused(true);
     }
   }, [hasUnpaused, paused]);
@@ -82,10 +81,12 @@ export default function EmailCollection(props: Props) {
     <Overlay>
       <Darker>
         <Container>
-          <h3>Sign up to receive updates{name && ` from ${name}`}!</h3>
-          <input type="email" placeholder="Enter email" />
+          <h3>{title}</h3>
+          {!link && <input type="email" placeholder="Enter email" />}
           <div>
-            <YesButton>Sign Up</YesButton>
+            <YesButton onClick={() => window.open(link, "_blank")}>
+              Sign Up
+            </YesButton>
             <NoButton onClick={() => setPaused(false)}>No Thanks</NoButton>
           </div>
         </Container>

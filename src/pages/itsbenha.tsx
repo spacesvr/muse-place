@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Gotham, { GothamProps } from "../themes/Gotham";
-const Codame = dynamic(import("../scenes/Gotham/Codame"), { ssr: false });
+import Gotham, { GothamProps } from "themes/Gotham";
+const Codame = dynamic(import("scenes/Gotham/Codame"), { ssr: false });
 
 const ARTIST = {
   name: "Benjamin Ha",

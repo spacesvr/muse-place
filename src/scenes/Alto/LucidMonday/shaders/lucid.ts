@@ -1,7 +1,4 @@
-// @ts-ignore
-import glsl from "babel-plugin-glsl/macro";
-
-export const vert = glsl`
+export const vert = `
   uniform float time;
   varying vec3 absPosition;
   varying vec3 vNormal;
@@ -19,7 +16,7 @@ export const vert = glsl`
   }
 `;
 
-export const frag = glsl`
+export const frag = `
     uniform float time;
     uniform float audio[5];
     varying vec3 vUv;

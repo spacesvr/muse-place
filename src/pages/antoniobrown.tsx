@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { GothamProps } from "../themes/Gotham";
-import { ScrollData } from "../themes/Alto/types/scroll";
+import { GothamProps } from "themes/Gotham";
+import { ScrollData } from "themes/Alto/types/scroll";
 
 const Alto = dynamic(import("scenes/Alto"), { ssr: false });
 
