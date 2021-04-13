@@ -1,6 +1,6 @@
 import { Fog, StandardEnvironment } from "spacesvr";
 import * as THREE from "three";
-import { Sky, Stars } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 
 import React, { ReactNode, useState } from "react";
 import { AudioAnalyser, DoubleSide, Vector3 } from "three";
