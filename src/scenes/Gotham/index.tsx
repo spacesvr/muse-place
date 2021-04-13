@@ -20,7 +20,7 @@ export default function GothamScene(props: GothamSceneProps) {
   return (
     <StandardEnvironment
       canvasProps={{ camera: { far: 200 } }}
-      player={{ pos: new Vector3(-3.4, 1, 4.9), rot: Math.PI, speed: 1.7 }}
+      playerProps={{ pos: [-3.4, 1, 4.9], rot: Math.PI, speed: 1.7 }}
     >
       {!night && <Sky inclination={1} distance={night ? 0 : 1000000} />}
       {night && <Stars count={1500} fade />}

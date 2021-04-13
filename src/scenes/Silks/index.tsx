@@ -28,8 +28,8 @@ const Silks = () => {
 
   return (
     <StandardEnvironment
-      player={{
-        pos: new Vector3(4.6, 1, -1.9),
+      playerProps={{
+        pos: [4.6, 1, -1.9],
         rot: Math.PI,
         speed: 1.3,
         controls: { disableGyro: true },

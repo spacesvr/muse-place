@@ -60,7 +60,7 @@ const AltoScene = (props: AltoSceneProps) => {
 
   return (
     <StandardEnvironment
-      player={{ pos: new Vector3(0, 2.7, 36), rot: -Math.PI / 2, speed: 2.4 }}
+      playerProps={{ pos: [0, 2.7, 36], rot: -Math.PI / 2, speed: 2.4 }}
       disableGround
     >
       <AltoSceneState.Provider value={{ aa, setAA }}>

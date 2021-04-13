@@ -26,7 +26,7 @@ const BarbershopScene = () => {
     <AmazonContainer>
       <StandardEnvironment
         pauseMenu={<PauseMenu />}
-        player={{ pos: new Vector3(1.276, 1.1, 2.543), speed: 0.9, rot: -2 }}
+        playerProps={{ pos: [1.276, 1.1, 2.543], speed: 0.9, rot: -2 }}
       >
         <MobileOnboarding />
         <BTSTrigger />

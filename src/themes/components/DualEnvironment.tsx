@@ -9,13 +9,19 @@ const DualEnvironment = (props: {
   keyframes: Keyframe[];
   canvasProps: Partial<ContainerProps>;
   disableGround?: boolean;
-  player?: {
-    pos?: Vector3;
+  playerProps?: {
+    pos?: number[];
     rot?: number;
     speed?: number;
   };
 }) => {
-  const { keyframes, children, canvasProps, player, disableGround } = props;
+  const {
+    keyframes,
+    children,
+    canvasProps,
+    playerProps,
+    disableGround,
+  } = props;
 
   if (isMobile) {
     return (
@@ -26,7 +32,7 @@ const DualEnvironment = (props: {
   } else {
     return (
       <StandardEnvironment
-        player={player}
+        playerProps={playerProps}
         canvasProps={canvasProps}
         disableGround={disableGround}
       >
