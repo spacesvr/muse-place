@@ -4,6 +4,7 @@ import { Sky, Stars } from "@react-three/drei";
 import Buildings from "themes/Gotham/components/Buildings";
 import Gotham, { GothamProps } from "themes/Gotham";
 import { Color, Vector3 } from "three";
+import { SimulationProps } from "spacesvr/core/types/simulation";
 
 type CodameProps = {
   socialLinks: {
@@ -14,10 +15,11 @@ type CodameProps = {
   };
   audio?: string;
   night?: boolean;
+  simulationProps?: SimulationProps;
 } & GothamProps;
 
 export default function Codame(props: CodameProps) {
-  const { artwork, socialLinks, night, name, audio } = props;
+  const { artwork, socialLinks, night, name, audio, simulationProps } = props;
 
   const socials = [];
   if (socialLinks.instagram) socials.push(socialLinks.instagram);
@@ -28,7 +30,8 @@ export default function Codame(props: CodameProps) {
   return (
     <StandardEnvironment
       canvasProps={{ camera: { far: 200 } }}
-      player={{ pos: new Vector3(-3.4, 1, 4.9), rot: Math.PI, speed: 1.7 }}
+      playerProps={{ pos: [-3.4, 1, 4.9], rot: Math.PI, speed: 1.7 }}
+      simulationProps={simulationProps}
     >
       {!night && <Sky inclination={1} distance={night ? 0 : 1000000} />}
       {night && <Stars count={5000} factor={100000} radius={5000000} fade />}

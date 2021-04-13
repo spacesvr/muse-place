@@ -47,28 +47,12 @@ const Control = (props: Props) => {
   const variant =
     product && product.variants.length ? product.variants[variantIndex] : null;
 
-  // const addSVG = useLoader(SVGLoader, "/assets/add-to-cart.svg");
-  // const cancelSVG = useLoader(SVGLoader, "/assets/cancel.svg");
-  //
-  // const svgGeo = useMemo(() => {
-  //   const data = variant && variant.available ? addSVG : cancelSVG;
-  //
-  //   const geos = data.paths
-  //     .map((path) => {
-  //       const shapes = path.toShapes(true);
-  //       return shapes.map((shape) => new THREE.ShapeBufferGeometry(shape));
-  //     })
-  //     .flat();
-  //
-  //   return BufferGeometryUtils.mergeBufferGeometries(geos);
-  // }, [addSVG, cancelSVG, variant, variant?.available]);
-
   return (
     <group {...restProps} name="control">
-      <group rotation-x={-Math.PI / 6}>
+      <group rotation-x={-Math.PI * 0.13}>
         <group position-y={HEIGHT / 2} name="content">
-          <mesh position-z={-0.001}>
-            <planeBufferGeometry args={[WIDTH, HEIGHT]} />
+          <mesh position-z={-0.026}>
+            <boxBufferGeometry args={[WIDTH, HEIGHT, 0.05]} />
             <meshStandardMaterial color="white" side={THREE.DoubleSide} />
           </mesh>
           {/* @ts-ignore */}

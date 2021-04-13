@@ -54,8 +54,6 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
     mat.roughness = 0;
   };
 
-  console.log(materials);
-
   fixMat(materials["rug"]);
   fixMat(materials["speakers"]);
   fixMat(materials["structure"]);

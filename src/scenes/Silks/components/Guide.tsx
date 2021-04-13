@@ -46,7 +46,6 @@ const Guide = () => {
     if (cart.count !== prevCart.current) {
       if (!saidCounterMessage && cart.count > 0) {
         // run on first cart update > 0
-        console.log("needs update");
         prevCart.current = cart.count;
         setSaidCounterMessage(true);
         setMessage("Go to the counter to checkout");

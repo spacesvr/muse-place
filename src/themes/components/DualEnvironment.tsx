@@ -10,7 +10,7 @@ const DualEnvironment = (props: {
   canvasProps: Partial<ContainerProps>;
   disableGround?: boolean;
   player?: {
-    pos?: Vector3;
+    pos?: [number, number, number];
     rot?: number;
     speed?: number;
   };
@@ -26,7 +26,7 @@ const DualEnvironment = (props: {
   } else {
     return (
       <StandardEnvironment
-        player={player}
+        playerProps={{ ...player }}
         canvasProps={canvasProps}
         disableGround={disableGround}
       >
