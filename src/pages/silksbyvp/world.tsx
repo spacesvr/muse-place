@@ -9,6 +9,11 @@ const SilksByVP: NextPage = () => {
     <>
       <Head>
         <title>Silks By VP</title>
+        <script
+          type="application/javascript"
+          async
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Yud2dd"
+        ></script>
       </Head>
       <Silks />
     </>

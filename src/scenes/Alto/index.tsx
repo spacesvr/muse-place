@@ -8,6 +8,7 @@ import Alto, { AltoProps } from "themes/Alto";
 import Lighting from "themes/Alto/components/Lighting";
 import Dropoff from "themes/Alto/components/Dropoff";
 import { HDRI } from "spacesvr";
+import { SimulationProps } from "spacesvr/core/types/simulation";
 
 export type AltoSceneProps = {
   stars?: boolean;
@@ -15,6 +16,7 @@ export type AltoSceneProps = {
   skyColor?: string;
   children?: ReactNode;
   hdri?: string;
+  simulationProps?: SimulationProps;
 } & Partial<AltoProps>;
 
 type AltoSceneStore = {
@@ -24,13 +26,22 @@ type AltoSceneStore = {
 export const AltoSceneState = React.createContext({} as AltoSceneStore);
 
 const AltoScene = (props: AltoSceneProps) => {
-  const { stars, fog, skyColor, children, hdri, ...restProps } = props;
+  const {
+    stars,
+    fog,
+    skyColor,
+    children,
+    simulationProps,
+    hdri,
+    ...restProps
+  } = props;
 
   const [aa, setAA] = useState<THREE.AudioAnalyser>();
 
   return (
     <StandardEnvironment
       playerProps={{ pos: [0, 2.7, 36], rot: -Math.PI / 2, speed: 2.4 }}
+      simulationProps={simulationProps}
       disableGround
     >
       <AltoSceneState.Provider value={{ aa, setAA }}>

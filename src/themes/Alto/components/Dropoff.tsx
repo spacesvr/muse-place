@@ -8,6 +8,7 @@ const Dropoff = () => {
   const { velocity, position, controls } = usePlayer();
   const limiter = useLimiter(45);
 
+
   useFrame(() => {
     if (!limiter.isReady) return;
     if (camera.position.y < -15) {

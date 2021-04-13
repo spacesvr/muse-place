@@ -10,7 +10,7 @@ const DualEnvironment = (props: {
   canvasProps: Partial<ContainerProps>;
   disableGround?: boolean;
   playerProps?: {
-    pos?: number[];
+    pos?: [number, number, number];
     rot?: number;
     speed?: number;
   };

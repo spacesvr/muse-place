@@ -65,6 +65,13 @@ const LinkTree: NextPage = () => {
         scrollData={scrollData}
         socials={ARTIST.socialLinks}
         audio="https://d27rt3a60hh1lx.cloudfront.net/audio/kmb-unity.mp3"
+        simulationProps={{
+          signalHost: "live.muse.place",
+          signalPort: 443,
+          signalPath: "/signal",
+          socketServer: "wss://live.muse.place:8081",
+          frequency: 40,
+        }}
       />
     </>
   );

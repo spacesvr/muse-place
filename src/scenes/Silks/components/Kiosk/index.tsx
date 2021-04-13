@@ -52,17 +52,17 @@ const Kiosk = (props: Props) => {
 
   return (
     <group name="kiosk" {...props} ref={group}>
+      <mesh position-y={-3 / 2 + 0.025}>
+        <boxBufferGeometry args={[WIDTH, 3, DEPTH]} />
+        <meshStandardMaterial color={0x464646} />
+      </mesh>
       <KioskContext.Provider value={{ productId, product, open }}>
-        <mesh position-y={-3 / 2 + 0.025}>
-          <boxBufferGeometry args={[WIDTH, 3, DEPTH]} />
-          <meshStandardMaterial color="white" />
-        </mesh>
         <group position-y={0.4}>
           <Floating height={0.05} speed={2}>
             {children}
           </Floating>
         </group>
-        <Control width={WIDTH} position-z={DEPTH / 2 - 0.15} />
+        <Control width={WIDTH} position-z={DEPTH / 2 - 0.05} />
         <Images position={[-WIDTH / 2 - 0.05, 0.5, DEPTH / 4]} />
         <Description position={[WIDTH / 2 + 0.15, 0.25, DEPTH / 4]} />
       </KioskContext.Provider>
