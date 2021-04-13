@@ -3,7 +3,7 @@ import Ghost from "./models/Ghost1";
 import Moneycat from "./models/Moneycat1";
 import { Floating } from "spacesvr";
 
-const Balloonski = () => {
+export default function Balloonski() {
   return (
     <group>
       <Moneycat
@@ -28,6 +28,4 @@ const Balloonski = () => {
       </Floating>
     </group>
   );
-};
-
-export default Balloonski;
+}

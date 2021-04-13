@@ -49,8 +49,6 @@ const AltoScene = (props: AltoSceneProps) => {
             />
           </mesh>
         )}
-        {/*{hdri ? <HDRI src={hdri} /> : <Sky sunPosition={[0, 1, -1]} />}*/}
-        {/*<Sky sunPosition={[0, 1, -1]} />*/}
         <HDRI
           src={
             hdri ||

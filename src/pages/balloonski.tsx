@@ -47,7 +47,6 @@ const LinkTree: NextPage = () => {
         artwork={linkData}
         socials={ARTIST.socialLinks}
         name={ARTIST.name}
-        audio="https://d27rt3a60hh1lx.cloudfront.net/audio/ini-bestmixever.mp3"
       >
         <Balloonski />
       </Gotham>
