@@ -7,7 +7,6 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACO_URL } from "spacesvr";
 
 type GLTFResult = GLTF & {
   nodes: {

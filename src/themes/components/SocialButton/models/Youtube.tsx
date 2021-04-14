@@ -7,7 +7,6 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACO_URL } from "spacesvr";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -19,7 +18,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/SBYoutube-1618368588/scene.glb.gz";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/SBYoutube-1618369762/scene.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
