@@ -38,7 +38,7 @@ const AltoScene = (props: AltoSceneProps) => {
 
   return (
     <StandardEnvironment
-      playerProps={{ pos: [0, 2.7, 36], rot: -Math.PI / 2, speed: 2.4 }}
+      playerProps={{ pos: [0, 3, 36], rot: -Math.PI / 2, speed: 2.4 }}
       simulationProps={simulationProps}
       canvasProps={{ pixelRatio: 1, gl: { antialias: false } }}
       disableGround
