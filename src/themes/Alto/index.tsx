@@ -68,13 +68,13 @@ const Alto = (props: Partial<AltoProps>) => {
       <Suspense fallback={null}>
         <Preload all />
         <AltoModel />
-        <Grass />
+        {/*<Grass />*/}
       </Suspense>
       <Sun />
-      <Scrolls count={scrollCount} setCount={setScrollCount} />
-      <Birds />
-      <Tablatures scrolls={scrollCount} />
-      <AudioReactive position={[0, 11, 0]} />
+      {/*<Scrolls count={scrollCount} setCount={setScrollCount} />*/}
+      {/*<Birds />*/}
+      {/*<Tablatures scrolls={scrollCount} />*/}
+      {/*<AudioReactive position={[0, 11, 0]} />*/}
       <FBPixel code={fbPixel} />
       <GoogleAnalytics code={googleAnalytics} />
     </AltoContext.Provider>

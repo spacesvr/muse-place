@@ -18,8 +18,6 @@ type GLTFResult = GLTF & {
     stairs: THREE.Mesh;
     information: THREE.Mesh;
     spawn: THREE.Mesh;
-    bench: THREE.Mesh;
-    tree: THREE.Mesh;
     terrain: THREE.Mesh;
     collider: THREE.Mesh;
   };
@@ -29,13 +27,11 @@ type GLTFResult = GLTF & {
     ["stairs.mat"]: THREE.MeshStandardMaterial;
     ["information.mat"]: THREE.MeshStandardMaterial;
     ["spawn.mat"]: THREE.MeshStandardMaterial;
-    ["bench.mat"]: THREE.MeshStandardMaterial;
-    ["tree.mat"]: THREE.MeshStandardMaterial;
   };
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Alto-1615802818/scene.glb.gz";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/AltoLowPolyCollider-1618364747/scene.glb.gz";
 
 const GRASS_TEX =
   "https://d27rt3a60hh1lx.cloudfront.net/content/alto/grasstile.jpg";
@@ -46,7 +42,7 @@ const TREE_TEX =
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
-  const { nodes, materials } = useGLTF(FILE_URL, DRACO_URL) as GLTFResult;
+  const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
 
   // grass texture
   const grassTileTex = useLoader(THREE.TextureLoader, GRASS_TEX);
@@ -58,7 +54,7 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
     [grassTileTex]
   );
 
-  materials["bench.mat"].envMapIntensity = 0.38;
+  // materials["bench.mat"].envMapIntensity = 0.38;
 
   useTrimeshCollision(
     (nodes.collider.geometry as BufferGeometry)
@@ -71,12 +67,6 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
     <group ref={group} {...props} dispose={null}>
       <group position-y={-36.69}>
         <group scale={[12, 12, 12]}>
-          <mesh
-            name="bench"
-            material={materials["bench.mat"]}
-            geometry={nodes.bench.geometry}
-          />
-          {/*<mesh name="tree" material={treeMat} geometry={nodes.tree.geometry} />*/}
           <mesh
             name="gods"
             material={materials["gods.mat"]}
@@ -115,4 +105,4 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload(FILE_URL, DRACO_URL);
+useGLTF.preload(FILE_URL);

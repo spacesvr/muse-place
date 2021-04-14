@@ -40,7 +40,7 @@ const AltoScene = (props: AltoSceneProps) => {
     <StandardEnvironment
       playerProps={{ pos: [0, 2.7, 36], rot: -Math.PI / 2, speed: 2.4 }}
       simulationProps={simulationProps}
-      canvasProps={{ pixelRatio: 1 }}
+      canvasProps={{ pixelRatio: 1, gl: { antialias: false } }}
       disableGround
     >
       <AltoSceneState.Provider value={{ aa, setAA }}>
@@ -49,7 +49,7 @@ const AltoScene = (props: AltoSceneProps) => {
           <Fog color={new THREE.Color(fog[0])} near={fog[1]} far={fog[2]} />
         )}
         {skyColor && (
-          <mesh>
+          <mesh name="sun">
             <sphereBufferGeometry args={[60, 60, 60]} />
             <meshStandardMaterial
               color={skyColor}
@@ -64,7 +64,6 @@ const AltoScene = (props: AltoSceneProps) => {
         <Alto {...restProps} />
         <Lighting />
         <Dropoff />
-
         {/* @ts-ignore */}
         {children && React.cloneElement(children, { aa })}
       </AltoSceneState.Provider>
