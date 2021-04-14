@@ -19,30 +19,31 @@ export default function SocialButton(props: SocialProps) {
 
   const lowerLink = link.toLowerCase();
 
-  const model = lowerLink.includes("instagram.com") ? (
-    <Instagram />
-  ) : lowerLink.includes("twitter.com") ? (
-    <Twitter />
-  ) : lowerLink.includes("spotify.com") ? (
-    <Spotify />
-  ) : lowerLink.includes("youtube.com") ? (
-    <Youtube />
-  ) : lowerLink.includes("typeform") ? (
-    <Typeform />
-  ) : lowerLink.includes("soundcloud.com") ? (
-    <Soundcloud />
-  ) : (
-    <Web />
-  );
+  const Model = lowerLink.includes("instagram.com")
+    ? Instagram
+    : lowerLink.includes("twitter.com")
+    ? Twitter
+    : lowerLink.includes("spotify.com")
+    ? Spotify
+    : lowerLink.includes("youtube.com")
+    ? Youtube
+    : lowerLink.includes("typeform")
+    ? Typeform
+    : lowerLink.includes("soundcloud.com")
+    ? Soundcloud
+    : Web;
 
-  const handleClick = () => {
-    window.open(link, "_blank");
-  };
+  const handleClick = () => window.open(link, "_blank");
 
   return (
-    <group {...restProps}>
+    <group {...restProps} name={`socialbutton-${link}`}>
       <Suspense fallback={null}>
-        <Interactable onClick={handleClick}>{model}</Interactable>
+        <Interactable onClick={handleClick}>
+          <mesh position-z={-0.0175} visible={false}>
+            <boxBufferGeometry args={[0.5, 0.5, 0.19]} />
+          </mesh>
+        </Interactable>
+        <Model />
       </Suspense>
     </group>
   );

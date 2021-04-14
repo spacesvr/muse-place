@@ -19,11 +19,11 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Typeform-1611646075/typeform.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/SBTypeform-1618368404/scen.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
-  const { nodes, materials } = useGLTF(FILE_URL, DRACO_URL) as GLTFResult;
+  const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
 
   materials["typeform.mat"].metalness = 0;
   materials["typeform.mat"].roughness = 0.25;
@@ -41,4 +41,4 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload(FILE_URL, DRACO_URL);
+useGLTF.preload(FILE_URL);
