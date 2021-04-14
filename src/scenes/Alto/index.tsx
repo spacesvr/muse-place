@@ -40,7 +40,6 @@ const AltoScene = (props: AltoSceneProps) => {
     <StandardEnvironment
       playerProps={{ pos: [0, 3, 36], rot: -Math.PI / 2, speed: 2.4 }}
       simulationProps={simulationProps}
-      canvasProps={{ pixelRatio: 1 }}
       disableGround
     >
       <AltoSceneState.Provider value={{ aa, setAA }}>
