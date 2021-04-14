@@ -72,7 +72,7 @@ const Alto = (props: Partial<AltoProps>) => {
       </Suspense>
       <Sun />
       <Scrolls count={scrollCount} setCount={setScrollCount} />
-      {/*<Birds />*/}
+      <Birds />
       <Tablatures scrolls={scrollCount} />
       <AudioReactive position={[0, 11, 0]} />
       <FBPixel code={fbPixel} />
