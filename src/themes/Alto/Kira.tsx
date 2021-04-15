@@ -10,7 +10,6 @@ import { Audio } from "spacesvr";
 
 export type AltoProps = {
   socials: string[];
-  scrollData: ScrollData[];
   model: {
     url: string;
     scale: number;
@@ -49,7 +48,6 @@ const defaultContext: AltoProps = {
 };
 
 const Alto = (props: Partial<AltoProps>) => {
-  const [scrollCount, setScrollCount] = useState(0);
   const { audio = "" } = props;
 
   return (
@@ -60,7 +58,7 @@ const Alto = (props: Partial<AltoProps>) => {
         <AltoModel />
       </Suspense>
       <Birds />
-      <Tablatures scrolls={scrollCount} />
+      <Tablatures scrolls={0} />
       <Audio url={audio} position={new Vector3(0, 11, 0)} />
     </AltoContext.Provider>
   );

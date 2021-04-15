@@ -25,7 +25,6 @@ const LinkTree: NextPage = () => {
         <title>{ARTIST.name} | Muse Place</title>
       </Head>
       <Standard
-        scrollData={scrollData}
         socials={ARTIST.socialLinks}
         audio="https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/kiramix.mp3"
       />
