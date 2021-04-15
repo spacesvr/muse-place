@@ -2,25 +2,27 @@ import { Audio, Fog, StandardEnvironment } from "spacesvr";
 import { Sky, Stars } from "@react-three/drei";
 
 import Buildings from "themes/Gotham/components/Buildings";
+import Onboarding from "themes/components/Onboarding";
 import Gotham, { GothamProps } from "themes/Gotham";
 import { ReactNode } from "react";
-import { Vector3 } from "three";
-import Onboarding from "../../themes/components/Onboarding";
-import { Color } from "three";
+import { Color, Vector3 } from "three";
+import { SimulationProps } from "spacesvr/core/types/simulation";
 
 export type GothamSceneProps = {
   night?: boolean;
   children?: ReactNode;
   audio?: string;
+  simulationProps?: SimulationProps;
 } & GothamProps;
 
 export default function GothamScene(props: GothamSceneProps) {
-  const { children, audio, night } = props;
+  const { children, audio, night, simulationProps } = props;
 
   return (
     <StandardEnvironment
       canvasProps={{ camera: { far: 200 } }}
       playerProps={{ pos: [-3.4, 1, 4.9], rot: Math.PI, speed: 1.7 }}
+      simulationProps={simulationProps}
     >
       {!night && <Sky inclination={1} distance={night ? 0 : 1000000} />}
       {night && <Stars count={1500} fade />}
