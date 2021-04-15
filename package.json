@@ -52,7 +52,7 @@
     "react-three-flex": "^0.5.2",
     "shopify-buy": "^2.11.0",
     "simplex-noise": "^2.4.0",
-    "spacesvr": "^1.5.3",
+    "spacesvr": "^1.5.7",
     "three": "^0.122.0",
     "unique-names-generator": "^4.4.0"
   },

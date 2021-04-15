@@ -1,5 +1,5 @@
 import { Suspense, useContext, useEffect, useRef } from "react";
-import { Audio, DRACO_URL } from "spacesvr";
+import { Audio } from "spacesvr";
 import { Vector3, Group } from "three";
 import Distort from "../Distort";
 import { Shadow, useAnimations, useGLTF } from "@react-three/drei";
@@ -48,6 +48,6 @@ export default AudioReactive;
 
 const GeneralModel = (props: { url: string }) => {
   const { url } = props;
-  const gltf = useGLTF(url, DRACO_URL);
+  const gltf = useGLTF(url);
   return <primitive object={gltf.scene} />;
 };
