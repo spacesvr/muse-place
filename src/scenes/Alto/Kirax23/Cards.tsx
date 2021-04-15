@@ -120,7 +120,7 @@ export default function Cards() {
     <group>
       <NftCard
         image="https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/netflixStill.jpg"
-        link="https://www.netflix.com/title/81032570"
+        link="https://foundation.app/X23"
         mats={materials}
         position={[0, 7, 0]}
         name="goldCard"
