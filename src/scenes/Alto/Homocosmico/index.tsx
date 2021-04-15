@@ -52,7 +52,7 @@ function Images() {
       {middleUrls.map((url, ind) => (
         <group rotation-y={-middleRot(ind + 1)} key={ind + 4}>
           <group rotation-y={-Math.PI} position={[0, 5.5, -12]}>
-            <group position-x={1.35}>
+            <group position-x={1.355}>
               <Text
                 anchorX="center"
                 anchorY="middle"

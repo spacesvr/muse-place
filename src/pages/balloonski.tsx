@@ -47,6 +47,7 @@ const LinkTree: NextPage = () => {
         artwork={linkData}
         socials={ARTIST.socialLinks}
         name={ARTIST.name}
+        premium
       >
         <Balloonski />
       </Gotham>
