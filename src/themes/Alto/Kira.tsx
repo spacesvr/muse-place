@@ -10,6 +10,7 @@ import { Audio } from "spacesvr";
 
 export type AltoProps = {
   socials: string[];
+  scrollData: ScrollData[];
   model: {
     url: string;
     scale: number;
