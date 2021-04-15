@@ -96,8 +96,6 @@ const Scroll = (props: JSX.IntrinsicElements["group"] & ScrollProps) => {
         </animated.group>
         <group position-y={0.5} name="innerscroll">
           <animated.group position-x={0.015} scale-y={scale} name="content">
-            {" "}
-            {/* ~2 DrawCalls */}
             {img && (
               <Image src={img} size={0.45} position-y={text ? -0.3 : -0.45} />
             )}
@@ -118,7 +116,7 @@ const Scroll = (props: JSX.IntrinsicElements["group"] & ScrollProps) => {
             )}
           </animated.group>
           <Suspense fallback={null}>
-            <ScrollModel open={open} /> {/* ~3 DrawCalls */}
+            <ScrollModel open={open} />
           </Suspense>
         </group>
       </animated.group>
