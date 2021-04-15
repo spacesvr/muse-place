@@ -18,7 +18,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Soundcloud-1611646055/soundcloud.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/SBSoundcloud-1618367924/scene.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
