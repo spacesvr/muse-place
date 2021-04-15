@@ -6,5 +6,4 @@ export type ScrollData = {
   img?: string;
   position?: [number, number, number];
   rotationY?: number;
-  name?: string;
 };
