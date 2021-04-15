@@ -64,7 +64,7 @@ export default function Model(props: ModelProps) {
             />
             <mesh
               name="LOGO"
-              material={mats[2]}
+              material={mats[0]}
               geometry={nodes.LOGO.geometry}
               position={[-26.5141, 10.7335, -15.8289]}
               rotation={[-Math.PI, 0.1571, -Math.PI]}

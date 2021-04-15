@@ -5,7 +5,7 @@ import { useFrame } from "react-three-fiber";
 import * as THREE from "three";
 
 type CardProps = {
-  link: string;
+  link?: string;
   mats: THREE.MeshBasicMaterial[];
   video?: string;
   image?: string;
@@ -34,12 +34,14 @@ const NftCard = (props: CardProps) => {
 
   return (
     <group {...props} ref={group}>
-      <Interactable onClick={handleClick}>
-        <mesh rotation-y={-Math.PI / 2 + 0.1}>
-          <boxBufferGeometry args={[1.9, 2.5, 0.25]} />
-          <meshBasicMaterial color="blue" opacity={0} transparent />
-        </mesh>
-      </Interactable>
+      {link && (
+        <Interactable onClick={handleClick}>
+          <mesh rotation-y={-Math.PI / 2 + 0.1}>
+            <boxBufferGeometry args={[1.9, 2.5, 0.25]} />
+            <meshBasicMaterial color="blue" opacity={0} transparent />
+          </mesh>
+        </Interactable>
+      )}
       <group scale={[1.25, 1.25, 1.25]}>
         {video && (
           <Video

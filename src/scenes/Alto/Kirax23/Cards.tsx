@@ -7,8 +7,8 @@ import { MeshBasicMaterial } from "three";
 const GAP = 0.2;
 const links: any[] = [
   {
-    video:
-      "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/genesis10.mp4",
+    img:
+      "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/g10.JPG",
     link: "https://foundation.app/X23/x23-genesis-collection-discovery-12710",
     thin: true,
   },
@@ -46,7 +46,7 @@ const links: any[] = [
   },
   {
     img:
-      "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/g6.JPG",
+      "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/g7.JPG",
     link: "https://foundation.app/X23/x23-genesis-collection-deception-10462",
     thin: true,
   },
@@ -116,5 +116,18 @@ export default function Cards() {
     )
   );
 
-  return <>{mats}</>;
+  return (
+    <group>
+      <NftCard
+        image="https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23/netflixStill.jpg"
+        link="https://www.netflix.com/title/81032570"
+        mats={materials}
+        position={[0, 7, 0]}
+        name="goldCard"
+        thin
+        rotate
+      />
+      {mats}
+    </group>
+  );
 }
