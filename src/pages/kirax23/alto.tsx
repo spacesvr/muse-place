@@ -16,32 +16,7 @@ const ARTIST = {
 
 const url = `https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kirax23`;
 
-const scrollData: ScrollData[] = [
-  {
-    img: `${url}/1.jpg`,
-    position: [15, -0.61, 30],
-  },
-  {
-    img: `${url}/2.jpg`,
-    position: [-15, -0.61, 30],
-  },
-  {
-    img: `${url}/3.jpg`,
-    position: [12.36, 1.21, -15.84],
-  },
-  {
-    img: `${url}/4.jpg`,
-    position: [-15, -1.13, -30],
-  },
-  {
-    img: `${url}/5.jpg`,
-    position: [30.52, -0.39, 0.97],
-  },
-  {
-    img: `${url}/6.jpg`,
-    position: [-12.04, 3.55, -5],
-  },
-];
+const scrollData: ScrollData[] = [];
 
 const LinkTree: NextPage = () => {
   return (
