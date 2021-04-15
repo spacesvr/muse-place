@@ -11,7 +11,7 @@ const ARTIST = {
   socialLinks: [
     "https://www.instagram.com/kor3design",
     "https://twitter.com/Kor3design",
-    "https://rarible.com/kor3",
+    "https://rarible.com/rarikor3",
   ],
 };
 
@@ -19,21 +19,27 @@ const url = `https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/kor3`;
 const linkData = [
   {
     src: `${url}/1.mp4`,
+    audio: true,
   },
   {
     src: `${url}/2.mp4`,
+    audio: true,
   },
   {
     src: `${url}/3.mp4`,
+    audio: true,
   },
   {
     src: `${url}/4.mp4`,
+    audio: true,
   },
   {
     src: `${url}/5.mp4`,
+    audio: true,
   },
   {
     src: `${url}/6.mp4`,
+    audio: true,
   },
 ];
 
