@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from "react";
-import AltoModel from "./models/AltoModel";
+import AltoModel from "./models/OldAltoModel";
 import { AudioAnalyser, Vector3 } from "three";
 import Grass from "./components/Grass";
 import Scrolls from "./components/Scrolls";
