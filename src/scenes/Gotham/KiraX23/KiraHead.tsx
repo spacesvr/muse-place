@@ -8,7 +8,6 @@ import { useGLTF } from "@react-three/drei";
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import { Color } from "three";
-import { DRACO_URL } from "spacesvr";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,7 +25,7 @@ const SCALE = 0.4; //0.065
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
-  const { nodes, materials } = useGLTF(FILE_URL, DRACO_URL) as GLTFResult;
+  const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
 
   materials.default.wireframe = true;
   materials.default.color = new Color(0x00ff00);
@@ -47,4 +46,4 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload(FILE_URL, DRACO_URL);
+useGLTF.preload(FILE_URL);

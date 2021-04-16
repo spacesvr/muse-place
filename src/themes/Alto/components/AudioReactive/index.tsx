@@ -1,8 +1,8 @@
-import { Suspense, useContext, useEffect, useRef } from "react";
+import { Suspense, useContext } from "react";
 import { Audio } from "spacesvr";
-import { Vector3, Group } from "three";
+import { Vector3 } from "three";
 import Distort from "../Distort";
-import { Shadow, useAnimations, useGLTF } from "@react-three/drei";
+import { Shadow, useGLTF } from "@react-three/drei";
 import { AltoContext } from "../../index";
 import { AltoSceneState } from "../../../../scenes/Alto";
 import { GroupProps } from "react-three-fiber";

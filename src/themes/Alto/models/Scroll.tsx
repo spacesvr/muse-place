@@ -23,7 +23,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Scroll-1611622181/scroll28.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/ScrollNoDraco-1618369852/scene.glb.gz";
 
 type Props = {
   open: boolean;

@@ -18,7 +18,7 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Web-1611646082/web.glb";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/SBWeb-1618368475/scene.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();

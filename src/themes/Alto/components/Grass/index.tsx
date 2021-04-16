@@ -13,7 +13,7 @@ import SimplexNoise from "simplex-noise";
 import cache1 from "./cache/cache1";
 import { useLimiter } from "spacesvr";
 
-const COUNT = 20000;
+const COUNT = 10000;
 const MIN_RADIUS = 10;
 const MAX_RADIUS = 35;
 
@@ -23,7 +23,7 @@ const useGrassMat = (): ShaderMaterial => {
     "https://d27rt3a60hh1lx.cloudfront.net/content/alto/grass.png"
   );
 
-  const limiter = useLimiter(70);
+  const limiter = useLimiter(30);
 
   useFrame(({ clock }) => {
     if (!mat || !limiter.isReady(clock)) return;
