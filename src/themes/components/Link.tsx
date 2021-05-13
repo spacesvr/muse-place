@@ -10,10 +10,11 @@ type LinkProps = {
   rotY?: number;
   text?: string;
   color?: string;
+  volume?: number;
 };
 
 const Link = (props: LinkProps) => {
-  const { audio, link, position, rotY = 0, size = 1.6, src } = props;
+  const { audio, link, position, rotY = 0, size = 1.6, src, volume } = props;
 
   const handleClick = () => {
     if (link) {
@@ -26,10 +27,16 @@ const Link = (props: LinkProps) => {
       <group position={position} rotation={[0, rotY, 0]}>
         {link ? (
           <Interactable onClick={handleClick}>
-            <Video src={src} size={size} framed muted={!audio} />
+            <Video
+              src={src}
+              size={size}
+              framed
+              muted={!audio}
+              volume={volume}
+            />
           </Interactable>
         ) : (
-          <Video src={src} size={size} framed muted={!audio} />
+          <Video src={src} size={size} framed muted={!audio} volume={volume} />
         )}
       </group>
     );

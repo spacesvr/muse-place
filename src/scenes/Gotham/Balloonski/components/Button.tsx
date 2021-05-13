@@ -1,4 +1,4 @@
-import { Box, RoundedBox, Text, useTexture } from "@react-three/drei";
+import { Box, RoundedBox, Text } from "@react-three/drei";
 import { animated, useSpring, config } from "react-spring/three";
 import { useEffect, useState } from "react";
 import { Interactable, Image } from "spacesvr";

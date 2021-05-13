@@ -40,6 +40,9 @@ const Cart = () => {
     rotY: Math.PI * 2 * incr,
     config: config.wobbly,
   });
+
+  const { scale } = useSpring({ scale: cart.count > 0 ? 1 : 0 });
+
   useEffect(() => {
     if (cart.count !== prevCart.current) {
       setIncr(incr + 1);
@@ -69,30 +72,32 @@ const Cart = () => {
   return (
     <>
       <Tool pos={[posX, posY]} face={false} pinY={device.mobile}>
-        {speech && (
-          <FacePlayer>
-            <group scale={15} position={[device.mobile ? -12 : -15, 3, 0]}>
-              <SpeechBubble>
-                {device.mobile
-                  ? "tap to view your cart"
-                  : "press c to view your cart"}
-              </SpeechBubble>
-            </group>
-          </FacePlayer>
-        )}
-        <Interactable onClick={device.mobile ? onTap : undefined}>
-          <mesh position-y={2.64} visible={false}>
-            <boxBufferGeometry args={[5, 5, 5]} />
-          </mesh>
-        </Interactable>
-        <Spinning ySpeed={cart.isOpen ? 0 : 0.6}>
-          <animated.group rotation-y={rotY}>
-            <Suspense fallback={null}>
-              <Preload all />
-              <ShoppingCart scale={cartScale} rotation-y={-Math.PI} />
-            </Suspense>
-          </animated.group>
-        </Spinning>
+        <animated.group scale={scale}>
+          {speech && (
+            <FacePlayer>
+              <group scale={15} position={[device.mobile ? -12 : -15, 3, 0]}>
+                <SpeechBubble>
+                  {device.mobile
+                    ? "tap to view your cart"
+                    : "press c to view your cart"}
+                </SpeechBubble>
+              </group>
+            </FacePlayer>
+          )}
+          <Interactable onClick={device.mobile ? onTap : undefined}>
+            <mesh position-y={2.64} visible={false}>
+              <boxBufferGeometry args={[5, 5, 5]} />
+            </mesh>
+          </Interactable>
+          <Spinning ySpeed={cart.isOpen ? 0 : 0.6}>
+            <animated.group rotation-y={rotY}>
+              <Suspense fallback={null}>
+                <Preload all />
+                <ShoppingCart scale={cartScale} rotation-y={-Math.PI} />
+              </Suspense>
+            </animated.group>
+          </Spinning>
+        </animated.group>
       </Tool>
       {cart.isOpen && <CartView />}
     </>

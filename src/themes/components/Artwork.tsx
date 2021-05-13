@@ -8,6 +8,7 @@ export type ArtworkProps = {
     audio?: boolean;
     size?: number;
     blank?: boolean;
+    volume?: number;
   }[];
   linkPositions: {
     p: Vector3;
@@ -26,10 +27,7 @@ const Artwork = (props: ArtworkProps) => {
             <Link
               position={linkPositions[i].p}
               rotY={linkPositions[i].r}
-              audio={piece.audio}
-              link={piece.link}
-              size={piece.size}
-              src={piece.src}
+              {...piece}
               key={i}
             />
           )

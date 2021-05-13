@@ -29,12 +29,14 @@ const Silks = () => {
 
   const [giveCode, setGiveCode] = useState(false);
 
+  console.log(shop);
+
   return (
     <StandardEnvironment
       playerProps={{
         pos: [4.6, 1, -1.9],
         rot: Math.PI / 2,
-        speed: 1.3,
+        speed: 2,
         controls: { disableGyro: true },
       }}
     >

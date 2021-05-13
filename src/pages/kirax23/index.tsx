@@ -57,6 +57,7 @@ const LinkTree: NextPage = () => {
         floorColor="black"
         night
         audio={`${url}/hottopic-1.mp3`}
+        environmentProps={{ playerProps: { speed: 1.7 * 2 } }}
       >
         <KiraX23 />
       </Gotham>

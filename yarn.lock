@@ -6025,10 +6025,10 @@ source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-spacesvr@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/spacesvr/-/spacesvr-1.6.5.tgz#3a6e986245cc77b649c63aa3d1be5699002e5f44"
-  integrity sha512-C/k6hQ25X8P7g6dL0Hbk5djyL2lJ/XJVfsuNRZ2k6I5bvqIuRLnhdDIEkC0WNgHISa5S4FRbvyzI1gDhYP6UmA==
+spacesvr@^1.6.9:
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/spacesvr/-/spacesvr-1.6.9.tgz#d0811c703d6f8005ccdc09f5f26a6f8e25ff361f"
+  integrity sha512-11XO9xQ+N/qEEd/W6aA9nsRQPNTd7CGyFlrmqOoZ5jwkTOhnEypJCBr+jT0u/sv9RwyzLDzSGAssHXna6+RZvQ==
   dependencies:
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"
@@ -6042,6 +6042,7 @@ spacesvr@^1.6.5:
     peerjs "^1.3.1"
     react-device-detect "^1.13.1"
     react-spring "^8.0.27"
+    shopify-buy "^2.11.0"
     valtio "^0.7.0"
 
 spdx-correct@^3.0.0:

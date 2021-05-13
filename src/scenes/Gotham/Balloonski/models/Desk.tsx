@@ -6,6 +6,8 @@ import * as THREE from "three";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import { BufferGeometry } from "three";
+import { useTrimeshCollision } from "spacesvr";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -22,6 +24,15 @@ const FILE_URL =
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
+
+  // taken from Balloonski/index
+  useTrimeshCollision(
+    (nodes.Group_2_002.geometry.clone() as BufferGeometry)
+      .scale(0.2, 0.2, 0.2)
+      .scale(2.04, 0.8, 1.29)
+      .rotateY(-Math.PI / 2)
+      .translate(2.04, 0, 4.1)
+  );
 
   return (
     <group ref={group} {...props} dispose={null}>
