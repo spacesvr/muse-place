@@ -14,7 +14,7 @@ const LinkTree: NextPage = () => {
         <title>The Highrise Co.</title>
         <title>Gallery</title>
       </Head>
-      <Gotham socials={[]} name="" premium>
+      <Gotham socials={[]} name="" premium night>
         <Highrise />
       </Gotham>
     </>
