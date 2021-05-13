@@ -1,9 +1,12 @@
 import { Image, Video, Interactable } from "spacesvr";
 import SocialButton from "../../../themes/components/SocialButton";
-import { GroupProps } from "@react-three/fiber";
+import { GroupProps, useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import Nature from "./components/Nature";
-import { Vector3 } from "three";
+import { MeshStandardMaterial, Vector3 } from "three";
+import { useMemo } from "react";
+import CrazyMaterial from "../../../themes/Gotham/shaders/crazy";
+import LavaCeiling from "./components/LavaCeiling";
 
 const CONTENT_FOLDER =
   "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/highrise";
@@ -41,11 +44,28 @@ export default function Highrise() {
     const z_gen = z > 0.5 ? (z - 0.5) * 10 + 13 : z * -10 - 6;
     return new Vector3(x_gen, y * 3 - 1.5, z_gen);
   };
+  const crazyMaterial = useMemo(() => new CrazyMaterial(), []);
+
+  useFrame(({ clock }, delta) => {
+    if (crazyMaterial) {
+      // @ts-ignore
+      crazyMaterial.time += delta;
+    }
+  });
 
   return (
     <group name="highrise">
+      <LavaCeiling crazyMaterial={crazyMaterial} />
       <group name="weed plants">
         <Nature density={1200} shape={weedShapeFunc} />
+      </group>
+      <group name="rug">
+        <Image
+          src={`${CONTENT_FOLDER}/logo.jpg`}
+          position={[0.29, 0, 4.14]}
+          rotation={[-Math.PI / 2, 0, Math.PI / 2]}
+          size={4.5}
+        />
       </group>
       <group
         name="wall-top"
