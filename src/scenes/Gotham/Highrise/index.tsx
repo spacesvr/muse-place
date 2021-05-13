@@ -1,8 +1,9 @@
-import { Floating, Image, Video, Interactable } from "spacesvr";
-import Placard from "../../../themes/components/Placard";
+import { Image, Video, Interactable } from "spacesvr";
 import SocialButton from "../../../themes/components/SocialButton";
 import { GroupProps } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
+import Nature from "./components/Nature";
+import { Vector3 } from "three";
 
 const CONTENT_FOLDER =
   "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/highrise";
@@ -28,18 +29,24 @@ function AnnotatedLink(props: { link: string; text?: string } & GroupProps) {
   );
 }
 
-const handleHRTVLink = () => {
-  window.location.href = "https://highrisetv.com";
-};
+const handleHRTVLink = () => (window.location.href = "https://highrisetv.com");
 
-const handleHRDeckLink = () => {
-  window.location.href =
-    "https://www.dropbox.com/s/b9xrt379ocwc1n7/HRmarketing2021%20%28dragged%29.pdf?dl=0";
-};
+const handleHRDeckLink = () =>
+  (window.location.href =
+    "https://www.dropbox.com/s/b9xrt379ocwc1n7/HRmarketing2021%20%28dragged%29.pdf?dl=0");
 
 export default function Highrise() {
+  const weedShapeFunc = (x: number, y: number, z: number) => {
+    const x_gen = x * 13 - 8;
+    const z_gen = z > 0.5 ? (z - 0.5) * 10 + 13 : z * -10 - 6;
+    return new Vector3(x_gen, y * 3 - 1.5, z_gen);
+  };
+
   return (
     <group name="highrise">
+      <group name="weed plants">
+        <Nature density={1200} shape={weedShapeFunc} />
+      </group>
       <group
         name="wall-top"
         position={[2.49, 1.07, 4]}
@@ -97,14 +104,14 @@ export default function Highrise() {
         rotation-y={Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/5a.png`}
+          src={`${CONTENT_FOLDER}/5a.jpg`}
           framed
           position-y={0.8}
           position-x={0.5}
           size={1.8}
         />
         <Image
-          src={`${CONTENT_FOLDER}/5b.png`}
+          src={`${CONTENT_FOLDER}/5b.jpg`}
           framed
           position-y={-0.4}
           position-x={0.5}
@@ -171,7 +178,7 @@ export default function Highrise() {
         rotation-y={Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/6a.jpeg`}
+          src={`${CONTENT_FOLDER}/6a.jpg`}
           framed
           size={1.1}
           position-y={0.8}
@@ -191,7 +198,7 @@ export default function Highrise() {
         rotation-y={-Math.PI / 2}
       >
         <Interactable onClick={handleHRTVLink}>
-          <Image src={`${CONTENT_FOLDER}/1.png`} framed size={1.5} />
+          <Image src={`${CONTENT_FOLDER}/1.jpg`} framed size={1.5} />
         </Interactable>
       </group>
       <group
@@ -200,7 +207,7 @@ export default function Highrise() {
         rotation-y={-Math.PI / 2}
       >
         <Interactable onClick={handleHRDeckLink}>
-          <Image src={`${CONTENT_FOLDER}/3.png`} framed size={1.7} />
+          <Image src={`${CONTENT_FOLDER}/3.jpg`} framed size={1.7} />
         </Interactable>
       </group>
       <group
@@ -209,7 +216,7 @@ export default function Highrise() {
         rotation-y={-Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/4a.png`}
+          src={`${CONTENT_FOLDER}/4a.jpg`}
           framed
           size={1.5}
           position-y={0.6}
@@ -227,13 +234,13 @@ export default function Highrise() {
         rotation-y={Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/9.jpeg`}
+          src={`${CONTENT_FOLDER}/9.jpg`}
           framed
           size={1.75}
           position={[3.25, 0.4, 0]}
         />
         <Image
-          src={`${CONTENT_FOLDER}/8.jpeg`}
+          src={`${CONTENT_FOLDER}/8.jpg`}
           framed
           size={1.75}
           position={[1.25, 0.4, 0]}
@@ -287,42 +294,42 @@ export default function Highrise() {
           />
         </group>
         <Image
-          src={`${CONTENT_FOLDER}/10.jpeg`}
+          src={`${CONTENT_FOLDER}/10.jpg`}
           framed
           size={1.75}
           position={[-10.5, 0.4, 0]}
         />
         <Image
           framed
-          src={`${CONTENT_FOLDER}/11.jpeg`}
+          src={`${CONTENT_FOLDER}/11.jpg`}
           size={1.75}
           position-x={-8.5}
           position-y={0.4}
         />
         <Image
           framed
-          src={`${CONTENT_FOLDER}/12.jpeg`}
+          src={`${CONTENT_FOLDER}/12.jpg`}
           size={1.75}
           position-x={-6.5}
           position-y={0.4}
         />
       </group>
-      <Image
-        name="raining-weed"
-        src={`${CONTENT_FOLDER}/raining-weed.gif`}
-        framed
-        size={10}
-        rotation-y={Math.PI}
-        position={[-1.4, 1.5, 19]}
-      />
-      <Image
-        name="raining-weed-other"
-        src={`${CONTENT_FOLDER}/raining-weed.gif`}
-        framed
-        size={12}
-        rotation-y={0}
-        position={[-1.4, 1.5, -12]}
-      />
+      {/*<Image*/}
+      {/*  name="raining-weed"*/}
+      {/*  src={`${CONTENT_FOLDER}/raining-weed.gif`}*/}
+      {/*  framed*/}
+      {/*  size={10}*/}
+      {/*  rotation-y={Math.PI}*/}
+      {/*  position={[-1.4, 1.5, 19]}*/}
+      {/*/>*/}
+      {/*<Image*/}
+      {/*  name="raining-weed-other"*/}
+      {/*  src={`${CONTENT_FOLDER}/raining-weed.gif`}*/}
+      {/*  framed*/}
+      {/*  size={12}*/}
+      {/*  rotation-y={0}*/}
+      {/*  position={[-1.4, 1.5, -12]}*/}
+      {/*/>*/}
     </group>
   );
 }

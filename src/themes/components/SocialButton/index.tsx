@@ -8,6 +8,7 @@ import Spotify from "./models/Spotify";
 import Youtube from "./models/Youtube";
 import Typeform from "./models/Typeform";
 import Soundcloud from "./models/Soundcloud";
+import Email from "./models/Email";
 import { GroupProps } from "@react-three/fiber";
 
 type SocialProps = {
@@ -23,6 +24,8 @@ export default function SocialButton(props: SocialProps) {
     ? Instagram
     : lowerLink.includes("twitter.com")
     ? Twitter
+    : lowerLink.includes("mailto:")
+    ? Email
     : lowerLink.includes("spotify.com")
     ? Spotify
     : lowerLink.includes("youtube.com")
