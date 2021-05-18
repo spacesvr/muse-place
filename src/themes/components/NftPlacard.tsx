@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Text, Interactable } from "spacesvr";
 
 type NftProps = {
@@ -16,8 +17,12 @@ export default function NftPlacard(props: NftProps) {
         <boxBufferGeometry args={[1.25, 1, 0.15]} />
         <meshBasicMaterial color="white" />
       </mesh>
-      <Text text={title} position={[0, 0.25, 0.01]} color={color} />
-      <Text text={`Owner: ${owner.substr(0, 8)}`} position={[0, 0, 0.01]} />
+      <Suspense fallback={null}>
+        <Text text={title} position={[0, 0.25, 0.01]} color={color} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Text text={`Owner: ${owner.substr(0, 8)}`} position={[0, 0, 0.01]} />
+      </Suspense>
       <Interactable onClick={() => window.open(`${link}`, "_blank")}>
         <group position={[0, -0.3, 0.075]}>
           <mesh>
@@ -28,7 +33,9 @@ export default function NftPlacard(props: NftProps) {
             <boxBufferGeometry args={[0.45, 0.2, 0.1]} />
             <meshBasicMaterial color="white" />
           </mesh>
-          <Text position-y={0.025} text="Buy" color={color} />
+          <Suspense fallback={null}>
+            <Text position-y={0.025} text="Buy" color={color} />
+          </Suspense>
         </group>
       </Interactable>
     </group>
