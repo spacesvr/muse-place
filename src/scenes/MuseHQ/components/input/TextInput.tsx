@@ -17,42 +17,60 @@ export default function TextInput(props: TextProps) {
   const { value, setValue, enabled, ...rest } = props;
 
   const { controls } = usePlayer();
-  const [engaged, setEngaged] = useState(false);
-  const curString = useRef("");
+  const inputRef = useRef<HTMLInputElement>();
+  const [focused, setFocused] = useState(false);
+  const [cursorPos, setCursorPos] = useState<number | null>(null);
 
   const { color } = useSpring({
-    color: engaged ? "#000" : "#828282",
+    color: focused ? "#000" : "#828282",
   });
 
   useEffect(() => {
-    if (engaged) controls.lock();
-    if (!engaged) controls.unlock();
-  }, [engaged]);
+    if (!inputRef.current) {
+      inputRef.current = document.createElement("input");
+      inputRef.current.setAttribute("type", "text");
+      inputRef.current.style.zIndex = "-99";
+      inputRef.current.style.opacity = "0.5";
+      inputRef.current.style.position = "absolute";
+      inputRef.current.style.left = "0";
+      inputRef.current.style.top = "0";
+      inputRef.current.style.transform = "translateY(-100%)";
+
+      inputRef.current.addEventListener("focus", (data) => {
+        setFocused(inputRef.current === document.activeElement);
+      });
+
+      inputRef.current.addEventListener("blur", (data) => {
+        setFocused(inputRef.current === document.activeElement);
+      });
+
+      document.body.appendChild(inputRef.current);
+
+      return () => {
+        if (inputRef.current) {
+          document.body.removeChild(inputRef.current);
+          inputRef.current = undefined;
+        }
+      };
+    }
+  }, []);
 
   useEffect(() => {
-    if (!enabled && engaged) {
-      setEngaged(false);
+    if (focused) controls.lock();
+    if (!focused) controls.unlock();
+  }, [focused]);
+
+  useEffect(() => {
+    if (!enabled && focused && inputRef.current) {
+      inputRef.current.blur();
     }
-  }, [enabled, engaged]);
+  }, [enabled, focused]);
 
   useEffect(() => {
     const onKeyup = (e: KeyboardEvent) => {
-      if (!engaged) return;
-      if (
-        e.key.match(/(\w|\s|[.,@\/#!$%\^&\*;:{}=\-_`~()])/g) &&
-        e.key.length === 1
-      ) {
-        curString.current = curString.current + e.key;
-        setValue(curString.current);
-      } else {
-        if (e.key === "Backspace") {
-          curString.current = curString.current.substr(
-            0,
-            curString.current.length - 1
-          );
-          setValue(curString.current);
-        }
-      }
+      if (!focused || !inputRef.current) return;
+      setCursorPos(inputRef.current.selectionStart);
+      setValue(inputRef.current.value);
     };
 
     document.addEventListener("keyup", onKeyup);
@@ -60,7 +78,12 @@ export default function TextInput(props: TextProps) {
     return () => {
       document.removeEventListener("keyup", onKeyup);
     };
-  }, [engaged, value]);
+  }, [focused]);
+
+  const focusInput = () => {
+    if (!inputRef.current) return;
+    inputRef.current.focus();
+  };
 
   const BORDER = 0.005;
   const WIDTH = 0.7;
@@ -74,12 +97,17 @@ export default function TextInput(props: TextProps) {
     outlineWidth: 0.003,
   };
 
+  const currentValue =
+    cursorPos !== null && focused
+      ? value.substring(0, cursorPos) + "|" + value.substring(cursorPos)
+      : value;
+
   return (
     <group name="input" {...rest}>
       <Text {...textStyles} position-z={0.051} position-x={(-WIDTH + 0.05) / 2}>
-        {value + "|"}
+        {currentValue}
       </Text>
-      <Interactable onClick={() => setEngaged(!engaged)}>
+      <Interactable onClick={() => focusInput()}>
         <RoundedBox args={[0.7, 0.1, 0.1]} radius={0.025} smoothness={4}>
           <meshStandardMaterial color="white" />
         </RoundedBox>
