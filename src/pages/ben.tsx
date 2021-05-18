@@ -20,7 +20,7 @@ const LinkTree: NextPage = () => {
       <Head>
         <title>{ARTIST.name} | Muse Place</title>
       </Head>
-      <Gotham socials={ARTIST.socialLinks} name={ARTIST.name} open night>
+      <Gotham socials={ARTIST.socialLinks} name={ARTIST.name} signup open night>
         <BenNft />
       </Gotham>
     </>
