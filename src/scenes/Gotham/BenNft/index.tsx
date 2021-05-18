@@ -1,6 +1,7 @@
 import { Image, Video, Interactable } from "spacesvr";
 import { Text } from "@react-three/drei";
 import NftPlacard from "themes/components/NftPlacard";
+import Popup from "../../../themes/components/Popup";
 
 const url = `https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/nft`;
 const THEME_COLOR = "green";
@@ -51,6 +52,24 @@ export default function BenNft() {
           color={THEME_COLOR}
         />
       </group>
+      <Popup
+        dialogue={{
+          key: "1",
+          text: "want your own 3D website?",
+          decisions: [
+            {
+              name: "sure",
+              action: () => window.open("https://bit.ly/3wgMNGO", "_blank"),
+            },
+            {
+              name: "nah",
+              // i need a function here, can't be null
+              action: () => console.log(""),
+            },
+          ],
+        }}
+        timeout={15000}
+      />
     </group>
   );
 }
