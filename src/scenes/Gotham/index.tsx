@@ -36,7 +36,6 @@ export default function GothamScene(props: GothamSceneProps) {
         ...playerProps,
       }}
       simulationProps={simulationProps}
-      dev
       {...restEnvProps}
     >
       {!night && <Sky inclination={1} distance={night ? 0 : 1000000} />}
