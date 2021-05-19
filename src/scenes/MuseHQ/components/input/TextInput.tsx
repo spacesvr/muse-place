@@ -38,8 +38,8 @@ export default function TextInput(props: TextProps) {
     if (!inputRef.current && enabled) {
       inputRef.current = document.createElement("input");
       inputRef.current.setAttribute("type", inputType);
-      inputRef.current.style.zIndex = "2";
-      inputRef.current.style.opacity = "0.1";
+      inputRef.current.style.zIndex = "-99";
+      inputRef.current.style.opacity = "0";
       inputRef.current.style.fontSize = "16px"; // this disables zoom on mobile
       inputRef.current.style.position = "absolute";
       inputRef.current.style.left = "50%";
