@@ -44,7 +44,7 @@ export default function Dialogues() {
           >
             <meshStandardMaterial ref={material} side={DoubleSide} />
           </RoundedBox>
-          <group name="content" position-z={DEPTH / 2 + 0.001}>
+          <group name="content" position-z={DEPTH / 2 + 0.003}>
             {dialogueLogic.map((dialogue, i) => (
               <VisualDialogue {...dialogue} enabled={i === index} />
             ))}

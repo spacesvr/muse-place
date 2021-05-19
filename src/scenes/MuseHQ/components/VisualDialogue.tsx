@@ -10,7 +10,7 @@ export default function VisualDialogue(props: Dialogue & { enabled: boolean }) {
   const { setIndex } = useContext(DialogueContext);
 
   const { posZ, scaleY } = useSpring({
-    posZ: enabled ? 0.001 : -0.003,
+    posZ: enabled ? 0.003 : -0.003,
     scaleY: enabled ? 1 : 0,
   });
 

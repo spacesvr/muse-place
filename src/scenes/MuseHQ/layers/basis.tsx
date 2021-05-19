@@ -8,7 +8,11 @@ export type Decision = {
 
 export type Interaction = {
   text: string;
-  input?: [string, (s: string) => void];
+  input?: {
+    value: string;
+    setValue: (s: string) => void;
+    type?: "text" | "password" | "email";
+  };
   decisions?: Decision[];
 };
 

@@ -35,10 +35,11 @@ export default function VisualInteraction(
       </Text>
       {input && (
         <TextInput
-          value={input[0]}
-          setValue={input[1]}
+          value={input.value}
+          setValue={input.setValue}
           position-y={-0.05}
           enabled={enabled}
+          inputType={input.type}
         />
       )}
       {decisions && (

@@ -234,7 +234,10 @@ export const useDialogs = (): DialogueLogic => {
     {
       key: "13",
       text: "what's your email?",
-      input: [email, setEmail],
+      input: {
+        value: email,
+        setValue: setEmail,
+      },
       decisions: [
         {
           name: "submit",
@@ -245,7 +248,11 @@ export const useDialogs = (): DialogueLogic => {
     {
       key: "14",
       text: "what your password? it better not be password",
-      input: [password, setPassword],
+      input: {
+        value: password,
+        setValue: setPassword,
+        type: "password",
+      },
       decisions: [
         {
           name: "submit",
@@ -256,7 +263,10 @@ export const useDialogs = (): DialogueLogic => {
     {
       key: "15",
       text: "you got a name?",
-      input: [name, setName],
+      input: {
+        value: name,
+        setValue: setName,
+      },
       decisions: [
         {
           name: "submit",
