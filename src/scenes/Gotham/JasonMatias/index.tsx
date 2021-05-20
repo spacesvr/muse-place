@@ -297,7 +297,11 @@ export default function JasonMatias() {
         position={[-5.47, 0.9, 0.6]}
         rotation-y={Math.PI / 2}
       >
-        <group position-y={-0.2} scale={[0.8, 0.8, 0.8]} name="skyraider">
+        <group
+          position-y={-0.2}
+          scale={[0.8, 0.8, 0.8]}
+          name="skywardCollection"
+        >
           <Image
             src={`${CONTENT_FOLDER}/Skyraider.jpg`}
             framed
@@ -323,10 +327,10 @@ export default function JasonMatias() {
         <TitleCard
           position={[0.15, 0, 0.1]}
           rotation-x={0}
-          title="Skyraider Collection"
+          title="Skyward Collection"
           width={0.8}
           contactUrl={CONTACT}
-          visitUrl={SITE}
+          visitUrl="https://www.jasonmatias.com/landscapes#/skyward/"
         />
         <group position-x={-2.56}>
           <Image
