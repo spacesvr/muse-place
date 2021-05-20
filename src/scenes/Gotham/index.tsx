@@ -39,7 +39,6 @@ export default function GothamScene(props: GothamSceneProps) {
       }}
       signup={signup ? "https://bit.ly/3wgMNGO" : undefined}
       simulationProps={simulationProps}
-      dev
       {...restEnvProps}
     >
       {!night && <Sky inclination={1} distance={night ? 0 : 1000000} />}
