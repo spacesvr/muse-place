@@ -59,6 +59,13 @@ const LinkTree: NextPage = () => {
         name={ARTIST.name}
         environmentProps={envProps}
         premium
+        simulationProps={{
+          signalHost: "alto.us-west-1.elasticbeanstalk.com",
+          signalPort: 443,
+          signalPath: "/signal",
+          socketServer: "wss://alto.us-west-1.elasticbeanstalk.com:8081",
+          frequency: 25,
+        }}
       >
         <Balloonski />
       </Gotham>
