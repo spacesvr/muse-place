@@ -2,15 +2,11 @@ import { Image, Video } from "spacesvr";
 import SocialButton from "themes/components/SocialButton";
 import { GroupProps } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
-import Label from "themes/components/Label";
-import Info from "./components/Info";
 import TitleCard from "./components/TitleCard";
 
 const CONTENT_FOLDER =
   "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/jasonmatias";
-const EMAIL = "youremail@gmail.com";
-const CONTACT = "mailto:youremail@gmail.com?";
-const SITE = "https://jasonmatias.com";
+const CONTACT = "mailto:jason@jasonmatias.com?";
 
 function AnnotatedLink(props: { link: string; text?: string } & GroupProps) {
   const { link, text = link.replace("https://", ""), ...restProps } = props;
