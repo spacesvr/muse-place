@@ -375,8 +375,6 @@ export default function JasonMatias() {
       <Image
         name="outside-edgefsolace"
         src={`${CONTENT_FOLDER}/EdgeOfSolace.jpg`}
-        framed
-        frameWidth={0.75}
         size={10}
         rotation-y={Math.PI}
         position={[-1.4, 1.5, 19]}
@@ -384,8 +382,6 @@ export default function JasonMatias() {
       <Image
         name="outside-eddie"
         src={`${CONTENT_FOLDER}/EddieWave.jpg`}
-        framed
-        frameWidth={0.75}
         size={12}
         rotation-y={0}
         position={[-1.4, 1.5, -12]}
