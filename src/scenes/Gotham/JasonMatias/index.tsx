@@ -303,26 +303,26 @@ export default function JasonMatias() {
             framed
             frameWidth={0.75}
             size={1}
-            position={[2.68, 0, 0]}
+            position={[4.18, 0.25, 0]}
           />
           <Image
             src={`${CONTENT_FOLDER}/Expeditor.jpg`}
             framed
             frameWidth={0.75}
             size={1.3}
-            position={[1.5, 0, 0]}
+            position={[2.95, 0.25, 0]}
           />
           <Image
             src={`${CONTENT_FOLDER}/Superfortress.jpg`}
             framed
             frameWidth={0.75}
             size={2.2}
-            position={[1.95, 1.025, 0]}
+            position={[1, 0.25, 0]}
           />
         </group>
         <TitleCard
-          position={[0.15, 0, 0.1]}
-          rotation-x={0}
+          position={[1.3, -0.5, 0.1]}
+          rotation-x={-0.5}
           title="Skyward Collection"
           width={0.8}
           contactUrl={CONTACT}
