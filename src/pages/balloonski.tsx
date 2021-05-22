@@ -28,7 +28,7 @@ const linkData = [
     volume: 0.15,
   },
   {
-    src: `${url}/NFT-Gator-Water.mp4`,
+    src: `${url}/nft.mp4`,
     audio: true,
     volume: 0.15,
   },
