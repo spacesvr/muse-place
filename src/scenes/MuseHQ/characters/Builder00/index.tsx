@@ -3,7 +3,7 @@ import LookAtPlayer from "../../modifiers/LookAtPlayer";
 import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { Group, Vector3 } from "three";
-import { useLimiter } from "spacesvr";
+import { useLimiter, Audio } from "spacesvr";
 import { useBuilder00Logic, useDialogs } from "./logic";
 import VisualDialogueLogic from "../../components/VisualDialogueLogic";
 
@@ -29,7 +29,7 @@ export default function Builder00() {
   const TALKING = state.value === "welcome";
 
   return (
-    <group name="builder-mort" position={[-11.78, 5.89, -3.07]}>
+    <group name="builder-mort" position={[-11.78, 0, -3.07]}>
       <LookAtPlayer enabled={LOOKING}>
         <group ref={group}>
           <Builder rotation-y={-Math.PI / 2} animation="idle" />
@@ -42,6 +42,11 @@ export default function Builder00() {
           dialogueLogic={dialogueLogic}
         />
       </LookAtPlayer>
+      <Audio
+        url="https://d27rt3a60hh1lx.cloudfront.net/content/musehq/breathing-1.mp3"
+        volume={0.11}
+        rollOff={4.5}
+      />
     </group>
   );
 }

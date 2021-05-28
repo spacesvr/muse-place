@@ -20,7 +20,7 @@ export default function MuseHQ() {
     <StandardEnvironment
       playerProps={{
         speed: 1.65,
-        pos: [-19.748, 9, -2.1],
+        pos: [-19.748, 0, -2.1],
         rot: -Math.PI / 2,
       }}
       canvasProps={{
@@ -28,47 +28,37 @@ export default function MuseHQ() {
         dpr: 1,
         gl: { antialias: false },
       }}
+      dev={process.env.NODE_ENV === "development"}
     >
       <IdentityLayer>
-        <InfinitePlane height={6} />
-        <Sky
-          turbidity={20}
-          rayleigh={4}
-          mieCoefficient={0}
-          mieDirectionalG={1}
-          inclination={0.114}
-          azimuth={0.32}
-          sunPosition={[0, 1, 0]}
-          distance={300}
-        />
         <Preload all />
         <ambientLight intensity={2} />
-        <AmbientParticles position={[-4 - 7.09, 6, -3 - 3.19]} />
+        <AmbientParticles position={[-4 - 7.09, 0, -3 - 3.19]} />
         <Suspense fallback={null}>
           <Preload all />
-          <Musehq />
+          <Musehq position-y={-6} />
         </Suspense>
-        <VisualIdea name="saas-0" size={0.4} position={[-0.16, 6.85, -3.95]} />
+        <VisualIdea name="saas-0" size={0.4} position={[-0.16, 0.85, -3.95]} />
         <VisualIdea
           name="saas-1"
           size={0.15}
-          position={[11.82 - 7.09, 6.9, 1.61 - 3.19]}
+          position={[11.82 - 7.09, 0.9, 1.61 - 3.19]}
           utility={0.9}
         />
         <VisualIdea
           name="saas-2"
           size={0.6}
-          position={[6.93 - 7.09, 6.85, 4 - 3.19]}
+          position={[6.93 - 7.09, 0.85, 4 - 3.19]}
         />
         <Builder00 />
-        {/*<EffectComposer autoClear multisampling={0}>*/}
-        {/*  <Bloom*/}
-        {/*    luminanceThreshold={0.25}*/}
-        {/*    luminanceSmoothing={0.9}*/}
-        {/*    intensity={0.5}*/}
-        {/*    height={300}*/}
-        {/*  />*/}
-        {/*</EffectComposer>*/}
+        <EffectComposer autoClear multisampling={0}>
+          <Bloom
+            luminanceThreshold={0.25}
+            luminanceSmoothing={0.9}
+            intensity={0.5}
+            height={300}
+          />
+        </EffectComposer>
       </IdentityLayer>
     </StandardEnvironment>
   );

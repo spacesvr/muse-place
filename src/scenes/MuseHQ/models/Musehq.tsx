@@ -42,7 +42,7 @@ type GLTFResult = GLTF & {
   materials: {
     ["wall.a2.mat"]: THREE.MeshStandardMaterial;
     ["wall.b2.mat"]: THREE.MeshStandardMaterial;
-    ["floor2.mat"]: THREE.MeshStandardMaterial;
+    ["floor.mat"]: THREE.MeshStandardMaterial;
     ["supports2.mat"]: THREE.MeshStandardMaterial;
     ["pedestal.mat"]: THREE.MeshStandardMaterial;
     ["railing.mat"]: THREE.MeshStandardMaterial;
@@ -66,24 +66,25 @@ type GLTFResult = GLTF & {
 };
 
 const FILE_URL =
-  "https://d27rt3a60hh1lx.cloudfront.net/models/Musehq-1621038324/06.glb.gz";
+  "https://d27rt3a60hh1lx.cloudfront.net/models/Musehq-1622162483/musehq_07.glb.gz";
 
 export default function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
   const { nodes, materials } = useGLTF(FILE_URL) as GLTFResult;
 
-  const SCALE = 0.006;
+  const SCALE = 0.6;
 
   // useTrimeshCollision(
   //   (nodes.collider.geometry as BufferGeometry)
   //     .clone()
   //     .scale(SCALE, SCALE, SCALE)
+  //     .translate(0, -6, 0)
   // );
 
   return (
-    <group ref={group} {...props} dispose={null} name="musehq" scale={SCALE}>
-      <group name="Scene">
-        <group name="musehq_02glb">
+    <group ref={group} {...props} dispose={null} name="musehq">
+      <group name="Scene" scale={SCALE}>
+        <group>
           <mesh
             name="wallsa"
             geometry={nodes.wallsa.geometry}
@@ -97,7 +98,7 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
           <mesh
             name="floor"
             geometry={nodes.floor.geometry}
-            material={materials["floor2.mat"]}
+            material={materials["floor.mat"]}
           />
           <mesh
             name="supports"
@@ -163,7 +164,7 @@ export default function Model(props: JSX.IntrinsicElements["group"]) {
             name="fans"
             geometry={nodes.fans.geometry}
             material={materials["telescope.mat"]}
-            position={[-3.6945, 1595.5533, 623.3818]}
+            position={[-0.0369, 15.9555, 6.2338]}
           />
           <mesh
             name="stilts"

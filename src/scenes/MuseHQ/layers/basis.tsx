@@ -4,6 +4,7 @@ import * as culori from "culori";
 export type Decision = {
   name: string;
   action: (setIndex: (n: number) => void) => void;
+  utility?: number;
 };
 
 export type Interaction = {
@@ -55,7 +56,8 @@ export class Idea {
 
     this.mediation = (hashStringToNum(decision.name) % 5000) / 5000;
     this.specificity = (1 - (len === 0 ? 1 : 1 / len)) * 0.6;
-    this.utility = 1 - 1 / decision.action.toString().length;
+    this.utility =
+      decision.utility || 1 - 1 / decision.action.toString().length;
   }
 
   setFromInteraction(interaction: Interaction) {

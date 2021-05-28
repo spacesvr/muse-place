@@ -43,22 +43,36 @@ export const useDialogs = (): DialogueLogic => {
   return [
     {
       key: "0",
-      text: "welcome to the musehq beta! sorry for the mess, we just opened up",
+      text:
+        "What's up, welcome to Muse HQ, where we give you all the tools to create a stunning 3D website. Ready to go?",
       decisions: [
         {
-          name: "it's ok, what's going on?",
-          action: (setIndex) => setIndex(1),
+          name: "check in",
+          action: (setIndex) => {
+            setLoginFlow(true);
+            setIndex(13);
+          },
+          utility: 0.6,
         },
         {
-          name: "just check me in",
-          action: (setIndex) => setIndex(5),
+          name: "sign up",
+          action: (setIndex) => {
+            setLoginFlow(false);
+            setIndex(15);
+          },
+          utility: 0.95,
+        },
+        {
+          name: "i'm lost, tell me more",
+          action: (setIndex) => setIndex(1),
+          utility: 0.7,
         },
       ],
     },
     {
       key: "1",
       text:
-        "we're building people's realities! it's a fun process that immerses your audience in your brand",
+        "Suppose you have a great idea, and to be quite honest a flat, 2 dimensional website just won't cut it!  We at Muse take that idea and give it the story & space it deserves. Start your company or continue to elevate it with an immersive 3d site tempered the needs of your business.",
       decisions: [
         {
           name: "that sounds awesome!",

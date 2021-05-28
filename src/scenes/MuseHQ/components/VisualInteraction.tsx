@@ -48,7 +48,7 @@ export default function VisualInteraction(
             const perc =
               decisions.length === 1 ? 0 : i / (decisions.length - 1);
             const width = decision.name.length * 0.28 + 0.25;
-            const posY = -perc * 0.125;
+            const posY = -perc * 0.225;
 
             const idea = new Idea();
             idea.setFromDecision(decision);
