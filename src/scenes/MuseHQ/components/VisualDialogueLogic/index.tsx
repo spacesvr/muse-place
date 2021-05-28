@@ -15,8 +15,8 @@ type VisualDialogueLogicProps = {
 };
 
 type DialogueState = {
-  index: number;
-  setIndex: (n: number) => void;
+  key: string;
+  setKey: (s: string) => void;
   source: [number, number, number];
   numStops: number;
   enabled: boolean;
@@ -40,7 +40,7 @@ export default function VisualDialogueLogic(
     ...rest
   } = props;
 
-  const [index, setIndex] = useState(0);
+  const [key, setKey] = useState("init");
   const currentIdea = useMemo(() => new Idea(), []);
   const targetIdea = useMemo(() => new Idea(), []);
 
@@ -68,8 +68,8 @@ export default function VisualDialogueLogic(
     <group name="dialogue" {...rest}>
       <DialogueContext.Provider
         value={{
-          index,
-          setIndex,
+          key,
+          setKey,
           source,
           numStops,
           enabled,

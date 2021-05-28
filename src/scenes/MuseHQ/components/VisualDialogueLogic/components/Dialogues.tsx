@@ -1,14 +1,14 @@
 import { RoundedBox } from "@react-three/drei";
 import { DoubleSide, MeshStandardMaterial } from "three";
 import { useFrame } from "@react-three/fiber";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { animated, useSpring } from "react-spring/three";
 import { DialogueContext } from "../index";
 import FacePlayer from "../../../modifiers/FacePlayer";
 import VisualDialogue from "../../VisualDialogue";
 
 export default function Dialogues() {
-  const { enabled, currentIdea, index, setIndex, dialogueLogic } = useContext(
+  const { enabled, currentIdea, key, setKey, dialogueLogic } = useContext(
     DialogueContext
   );
 
@@ -28,10 +28,6 @@ export default function Dialogues() {
     scale: enabled ? 1 : 0,
   });
 
-  useEffect(() => {
-    setIndex(0);
-  }, []);
-
   return (
     <group position-x={WIDTH / 2 + 0.1} position-y={0}>
       <animated.group scale={scale}>
@@ -45,8 +41,8 @@ export default function Dialogues() {
             <meshStandardMaterial ref={material} side={DoubleSide} />
           </RoundedBox>
           <group name="content" position-z={DEPTH / 2 + 0.003}>
-            {dialogueLogic.map((dialogue, i) => (
-              <VisualDialogue {...dialogue} enabled={i === index} />
+            {dialogueLogic.map((dialogue) => (
+              <VisualDialogue {...dialogue} enabled={dialogue.key === key} />
             ))}
           </group>
         </FacePlayer>

@@ -2,6 +2,8 @@ import useStateMachine from "@cassiozen/usestatemachine";
 import { useIdentity } from "../../layers/identity";
 import { DialogueLogic } from "../../components/VisualDialogueLogic";
 import { useProxy } from "valtio";
+import { useLoginLogic } from "../../logic/login";
+import { useSignupLogic } from "../../logic/signup";
 import { useState } from "react";
 
 export const useBuilder00Logic = () =>
@@ -29,288 +31,122 @@ export const useBuilder00Logic = () =>
     },
   });
 
+const FACTS = [
+  "the mitochondria is the powerhouse of the cell",
+  "this website is build with three.js!",
+  "this website uses our Muse's custom framework called spacesvr, check it out on npm",
+  "before we called ourselves Muse, we called ourselves spaces",
+];
+
 export const useDialogs = (): DialogueLogic => {
   const identity = useIdentity();
   const identityRef = useProxy(identity);
 
-  const [loginFlow, setLoginFlow] = useState(false); // when true, login, not signup
+  const loginLogic = useLoginLogic("init", "done");
+  const signupLogic = useSignupLogic("init", "done");
 
-  const [error, setError] = useState<string>();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [fact, setFact] = useState(
+    "the mitochondria is the powerhouse of the cell"
+  );
 
   return [
     {
-      key: "0",
+      key: "init",
       text:
-        "What's up, welcome to Muse HQ, where we give you all the tools to create a stunning 3D website. Ready to go?",
+        "what's up, welcome to muse hq, where we give you all the tools to create a stunning 3D website. ready to go?",
       decisions: [
         {
-          name: "check in",
-          action: (setIndex) => {
-            setLoginFlow(true);
-            setIndex(13);
-          },
+          name: "log me in",
+          nextKey: "login",
           utility: 0.6,
         },
         {
-          name: "sign up",
-          action: (setIndex) => {
-            setLoginFlow(false);
-            setIndex(15);
-          },
+          name: "sign me up",
+          nextKey: "signup",
           utility: 0.95,
         },
         {
-          name: "i'm lost, tell me more",
-          action: (setIndex) => setIndex(1),
+          name: "go where? I just got here",
+          nextKey: "pitch",
           utility: 0.7,
         },
       ],
     },
+
     {
-      key: "1",
+      key: "pitch",
       text:
-        "Suppose you have a great idea, and to be quite honest a flat, 2 dimensional website just won't cut it!  We at Muse take that idea and give it the story & space it deserves. Start your company or continue to elevate it with an immersive 3d site tempered the needs of your business.",
+        "as you can see this site is crazy immersive - it lets your brand elevate its story way beyond any 2D site",
       decisions: [
         {
-          name: "that sounds awesome!",
-          action: (setIndex) => setIndex(5),
-        },
-        {
-          name: "that sounds lame",
-          action: (setIndex) => setIndex(2),
+          name: "you have my attention",
+          nextKey: "guidance",
         },
       ],
     },
     {
-      key: "2",
-      text: "that was fucking rude. go explore the site. or don't.",
-      decisions: [
-        {
-          name: "i'm sorry",
-          action: (setIndex) => setIndex(3),
-        },
-        {
-          name: "aight bye",
-          action: (setIndex) => setIndex(10),
-        },
-      ],
-    },
-    {
-      key: "3",
+      key: "guidance",
       text:
-        "it's ok, I know this is a lot to take in at once. want to get started making a site?",
+        "awesome, my friend at the builder table will be able to help you get started building your world",
       decisions: [
         {
-          name: "sure!",
-          action: (setIndex) => setIndex(5),
+          name: "actually, log me in",
+          nextKey: "login",
         },
         {
-          name: "not now",
-          action: (setIndex) => setIndex(4),
+          name: "ok sounds good",
+          nextKey: "wait",
         },
       ],
     },
     {
-      key: "4",
-      text: "all good, i'll be here in case you want to talk",
+      key: "wait",
+      text: "*heavy breathing*",
       decisions: [
         {
-          name: "actually, i want to get checked in",
-          action: (setIndex) => setIndex(5),
+          name: `I'm not ${identityRef.name}`,
+          nextKey: "logout",
+        },
+        {
+          name: "what's up",
+          nextKey: "fact",
         },
       ],
     },
     {
-      key: "5",
-      text:
-        "ok awesome, do you already have an account or should I make you one?",
-      decisions: [
-        {
-          name: "log in",
-          action: (setIndex) => {
-            setLoginFlow(true);
-            setIndex(13);
-          },
-        },
-        {
-          name: "sign up",
-          action: (setIndex) => {
-            setLoginFlow(false);
-            setIndex(15);
-          },
-        },
-      ],
-    },
-    {
-      key: "6",
-      text: "logging in...",
-      effect: async (setIndex) => {
-        if (!identity.exists) {
-          setError(undefined);
-          const result = await identity.login(email, password);
-          if (result.success) {
-            setIndex(17);
-          } else {
-            setError(result.message);
-            setIndex(16);
-          }
-        }
+      key: "fact",
+      text: fact,
+      effect: async () => {
+        setFact(FACTS[Math.floor(Math.random() * FACTS.length)]);
       },
       decisions: [
         {
-          name: "wait go back",
-          action: (setIndex) => setIndex(5),
+          name: "thanks for that",
+          nextKey: "wait",
         },
       ],
     },
     {
-      key: "7",
-      text: "signing up...",
-      effect: async (setIndex) => {
-        if (!identity.exists) {
-          setError(undefined);
-          const result = await identity.signup(name, email, password);
-          if (result.success) {
-            setIndex(6);
-          } else {
-            setError(result.message);
-            setIndex(16);
-          }
-        }
-      },
+      key: "done",
+      text: `all done! welcome again to muse hq, ${identityRef.name}! feel free to explore`,
       decisions: [
         {
-          name: "wait go back",
-          action: (setIndex) => setIndex(5),
-        },
-        {
-          name: "done",
-          action: (setIndex) => setIndex(8),
+          name: "thanks",
+          nextKey: "wait",
         },
       ],
     },
     {
-      key: "8",
-      text: `all done! welcome to muse hq, ${identityRef.name}! feel free to explore`,
-    },
-    {
-      key: "9",
-      text:
-        "not even lying, it's better than it sounds. want to check in to get full access?",
+      key: "logout",
+      text: `sorry, I haven't coded this yet, i'm currently lost in the metaverse. send help`,
       decisions: [
-        {
-          name: "sure!",
-          action: (setIndex) => setIndex(5),
-        },
-        {
-          name: "maybe later",
-          action: (setIndex) => setIndex(4),
-        },
-      ],
-    },
-    {
-      key: "10",
-      text:
-        "01000110 01010101 01000011 01001011 01011001 01001111 01010101 00100001 (that's fuck you in binary)",
-    },
-    {
-      key: "11",
-      text:
-        "right? right? we're just now launching our beta, do you want to be one of our first testers?",
-      decisions: [
-        {
-          name: "sure!",
-          action: (setIndex) => setIndex(5),
-        },
         {
           name: "nah",
-          action: (setIndex) => setIndex(4),
+          nextKey: "wait",
         },
       ],
     },
-    {
-      key: "12",
-      text: "there was a problem trying to check you in. blame alex",
-      decisions: [
-        {
-          name: "try again",
-          action: (setIndex) => setIndex(6),
-        },
-        {
-          name: "nevermind",
-          action: (setIndex) => setIndex(4),
-        },
-      ],
-    },
-    {
-      key: "13",
-      text: "what's your email?",
-      input: {
-        value: email,
-        setValue: setEmail,
-      },
-      decisions: [
-        {
-          name: "submit",
-          action: (setIndex) => setIndex(14),
-        },
-      ],
-    },
-    {
-      key: "14",
-      text: "what your password? it better not be password",
-      input: {
-        value: password,
-        setValue: setPassword,
-        type: "password",
-      },
-      decisions: [
-        {
-          name: "submit",
-          action: (setIndex) => setIndex(loginFlow ? 6 : 7),
-        },
-      ],
-    },
-    {
-      key: "15",
-      text: "you got a name?",
-      input: {
-        value: name,
-        setValue: setName,
-      },
-      decisions: [
-        {
-          name: "submit",
-          action: (setIndex) => setIndex(13),
-        },
-      ],
-    },
-    {
-      key: "16",
-      text: `error: ${error}`,
-      decisions: [
-        {
-          name: "try again",
-          action: (setIndex) => setIndex(5),
-        },
-      ],
-    },
-    {
-      key: "17",
-      text: "running a background check...",
-      effect: async (setIndex) => {
-        setError(undefined);
-        const result = await identity.fetch();
-        if (result.success) {
-          setIndex(8);
-        } else {
-          setError(result.message);
-          setIndex(16);
-        }
-      },
-    },
+    ...loginLogic,
+    ...signupLogic,
   ];
 };

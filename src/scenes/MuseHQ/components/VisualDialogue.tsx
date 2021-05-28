@@ -7,7 +7,7 @@ import { DialogueContext } from "./VisualDialogueLogic";
 export default function VisualDialogue(props: Dialogue & { enabled: boolean }) {
   const { effect, text, input, decisions, enabled } = props;
 
-  const { setIndex } = useContext(DialogueContext);
+  const { setKey } = useContext(DialogueContext);
 
   const { posZ, scaleY } = useSpring({
     posZ: enabled ? 0.003 : -0.003,
@@ -20,7 +20,11 @@ export default function VisualDialogue(props: Dialogue & { enabled: boolean }) {
     if (prevEnabled !== enabled) {
       setPrevEnabled(enabled);
       if (enabled && effect) {
-        effect(setIndex);
+        effect().then((newKey: string) => {
+          if (newKey) {
+            setKey(newKey);
+          }
+        });
       }
     }
   }, [prevEnabled, enabled]);
