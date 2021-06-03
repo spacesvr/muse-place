@@ -87,7 +87,6 @@ export class Identity {
       this.name = json.name;
       this.email = json.email;
       this.groups = json.groups;
-      console.log(this);
       analytics.identify(json.email, { name: this.name });
     }
 
