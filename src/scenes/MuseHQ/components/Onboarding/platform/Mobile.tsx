@@ -121,7 +121,7 @@ export default function Mobile(props: Props) {
         <Speech position-y={-2}>Drag the joystick to move around</Speech>
       </animated.group>
       <animated.group name="stage-3" scale-y={stage3} scale-z={stage3}>
-        <Speech>now go explore to build your site!</Speech>
+        <Speech>now go to talk to Mort to build your website!</Speech>
         <Button
           position-y={-3}
           onClick={() => {
