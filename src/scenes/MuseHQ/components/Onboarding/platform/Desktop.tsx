@@ -77,7 +77,7 @@ export default function Desktop(props: Props) {
   return (
     <group name="desktop-onboarding">
       <animated.group name="stage-0" scale-y={stage0} scale-z={stage0}>
-        <Speech>Welcome to AWGE Space.</Speech>
+        <Speech>welcome to muse.</Speech>
         <Button
           position-y={-3}
           onClick={() => {
