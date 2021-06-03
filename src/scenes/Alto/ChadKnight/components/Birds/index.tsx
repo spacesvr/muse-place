@@ -6,9 +6,11 @@ import { createBirdGeometry } from "./core/bird";
 import { initComputeRenderer } from "./core/physics";
 import { GroupProps, useFrame, useThree } from "@react-three/fiber";
 import { MathUtils } from "three";
-import { AltoSceneState } from "../../../../scenes/Alto";
+import { AltoSceneState } from "scenes/Alto";
 import { useDetectGPU } from "@react-three/drei";
-import { useLimiter } from "../../../../scenes/Silks/utils/limiter";
+import { useLimiter } from "scenes/Silks/utils/limiter";
+import { useSeason } from "../../contexts/Seasons";
+import { animated, useSpring } from "react-spring/three";
 
 // general scale: z=350
 
@@ -21,8 +23,7 @@ const effectController = {
   freedom: 0.75,
 };
 
-const BOUNDS = 10;
-const SCALE = 0.2;
+const SCALE = 0.5;
 
 const Birds = (props: { bounds?: number } & GroupProps) => {
   const { bounds = 10, ...restProps } = props;
@@ -68,6 +69,14 @@ const Birds = (props: { bounds?: number } & GroupProps) => {
     return mesh;
   }, [BIRDS, WIDTH, TIER]);
 
+  const { activeSeason } = useSeason();
+  const { size } = useSpring({
+    size: activeSeason === "Spring" ? 1 : 0,
+    config: {
+      mass: 2,
+    },
+  });
+
   useFrame(({ clock, mouse }, delta) => {
     if (!gpuCompute || !birdMesh || !posVar.current || !velVar.current) return;
     if (!limiter.isReady(clock)) return;
@@ -109,8 +118,10 @@ const Birds = (props: { bounds?: number } & GroupProps) => {
   });
 
   return (
-    <group scale={[SCALE, SCALE, SCALE]} position-y={10} {...restProps}>
-      <primitive object={birdMesh} />
+    <group scale={SCALE} position-y={10} {...restProps}>
+      <animated.group scale={size}>
+        <primitive object={birdMesh} />
+      </animated.group>
     </group>
   );
 };

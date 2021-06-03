@@ -32,11 +32,39 @@ function AnnotatedLink(props: { link: string; text?: string } & GroupProps) {
   );
 }
 
-const handleHRTVLink = () => (window.location.href = "https://highrisetv.com");
+function ClickHere(
+  props: { link: string; text?: string; color?: string } & GroupProps
+) {
+  const { link, text = "Click Here", color = "red", ...restProps } = props;
 
-const handleHRDeckLink = () =>
-  (window.location.href =
-    "https://www.dropbox.com/s/b9xrt379ocwc1n7/HRmarketing2021%20%28dragged%29.pdf?dl=0");
+  return (
+    <group {...restProps}>
+      <Interactable
+        onClick={() => {
+          window.open(link, "_blank");
+        }}
+      >
+        <mesh>
+          <boxBufferGeometry args={[0.55, 0.2, 0.07]} />
+          <meshBasicMaterial color="blue" opacity={0} transparent />
+        </mesh>
+      </Interactable>
+      <mesh>
+        <boxBufferGeometry args={[0.5, 0.15, 0.05]} />
+        <meshBasicMaterial color="white" />
+      </mesh>
+      <mesh position-z={-0.01}>
+        <boxBufferGeometry args={[0.55, 0.2, 0.04]} />
+        <meshBasicMaterial color={color} />
+      </mesh>
+      <Text color={color} position-z={0.04} fontSize={0.075}>
+        {text}
+      </Text>
+    </group>
+  );
+}
+
+const handleHRTVLink = () => window.open("https://highrisetv.com", "_blank");
 
 export default function Highrise() {
   const weedShapeFunc = (x: number, y: number, z: number) => {
@@ -64,8 +92,27 @@ export default function Highrise() {
           src={`${CONTENT_FOLDER}/logo.jpg`}
           position={[0.29, 0, 4.14]}
           rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-          size={4.5}
+          size={3.5}
         />
+      </group>
+      <group
+        name="wall-right"
+        rotation-y={-Math.PI / 2}
+        position={[2.49, 1.25, 10.6]}
+      >
+        <Image src={`${CONTENT_FOLDER}/weeklydrops.png`} framed size={1.75} />
+        <ClickHere
+          position-y={-1.1}
+          color="black"
+          link="https://www.highrisetv.com/hrtv-blog/weekly-drops-episode-3"
+        />
+      </group>
+      <group
+        name="wall-left"
+        rotation-y={-Math.PI / 2}
+        position={[2.49, 1.25, -2.35]}
+      >
+        <Image src={`${CONTENT_FOLDER}/fgo.png`} framed size={1.75} />
       </group>
       <group
         name="wall-top"
@@ -79,32 +126,38 @@ export default function Highrise() {
           position-x={-2.0}
           position-y={0.6}
         />
-        <group name="connect" position={[-2.65, -0.1, 0]}>
+        <group name="connect" position={[-2.65, 0.1, 0]}>
           {/* @ts-ignore */}
           <Text
             fontSize={0.1}
             color="black"
             anchorX="left"
-            position={[-0.1, -0.2, 0]}
+            position={[0.1, -0.225, 0]}
           >
-            Check us out on these platforms:
+            Directory:
           </Text>
           <AnnotatedLink
-            link="https://thehighriseco.com"
-            text="Exit to The Highrise Co"
+            link="https://www.highrisetv.com/"
+            text="HIGHRISE TV PLATFORM"
             position-y={-0.4}
             position-x={0.2}
           />
           <AnnotatedLink
             link="https://www.highrise-agency.com/"
-            text="Exit to Highrise Agency"
+            text="HIGHRISE AGENCY WEBSITE"
             position-y={-0.6}
             position-x={0.2}
           />
           <AnnotatedLink
-            link="https://www.highrisetv.com/"
-            text="Exit to Highrise TV"
+            link="https://www.dropbox.com/s/b9xrt379ocwc1n7/HRmarketing2021%20%28dragged%29.pdf?dl=0"
+            text="HIGHRISE AGENCY DECK"
             position-y={-0.8}
+            position-x={0.2}
+          />
+          <AnnotatedLink
+            link="https://thehighriseco.shop/"
+            text="SHOP HIGHRISE MERCH"
+            position-y={-1}
             position-x={0.2}
           />
         </group>
@@ -124,46 +177,43 @@ export default function Highrise() {
         rotation-y={Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/5a.jpg`}
+          src={`${CONTENT_FOLDER}/ontherise.jpg`}
           framed
           position-y={0.8}
           position-x={0.5}
           size={1.8}
         />
+        <ClickHere
+          link="https://www.youtube.com/watch?v=HcxiI8AjE-s"
+          position={[1.25, 0.2, 0.075]}
+          text="Watch Now"
+        />
         <Image
-          src={`${CONTENT_FOLDER}/5b.jpg`}
+          src={`${CONTENT_FOLDER}/waxhotbox.jpg`}
           framed
           position-y={-0.4}
           position-x={0.5}
           size={1.8}
         />
+        <ClickHere
+          link="https://www.youtube.com/watch?v=gQsrV5gaBYg"
+          position={[1.25, -1, 0.075]}
+          text="Watch Now"
+        />
       </group>
       <group
         name="wall-top-middle"
-        position={[-1.39, 1.07, 4.1]}
+        position={[-1.39, 1.25, 4.1]}
         rotation-y={Math.PI / 2}
       >
         {/* @ts-ignore */}
+        <Image
+          src={`${CONTENT_FOLDER}/gs.png`}
+          position={[0.05, 0.7, 0]}
+          framed
+        />
         <Text
-          position={[0.05, 1.0, 0]}
-          color="black"
-          fontSize={0.1}
-          maxWidth={1.225}
-          anchorY="top"
-        >
-          Events:
-        </Text>
-        <Text
-          position={[0.05, 0.8, 0]}
-          color="black"
-          fontSize={0.08}
-          maxWidth={1.225}
-          anchorY="top"
-        >
-          Coming Soon!
-        </Text>
-        <Text
-          position={[0.05, 0.1, 0]}
+          position={[0.05, 0.125, 0]}
           color="black"
           fontSize={0.1}
           maxWidth={1.225}
@@ -172,24 +222,29 @@ export default function Highrise() {
           Social Media:
         </Text>
         <AnnotatedLink
-          link="https://www.instagram.com/thehighriseco"
-          text="@thehighriseco on Instagram"
-          position={[-0.4, -0.2, 0]}
-        />
-        <AnnotatedLink
-          link="https://www.twitter.com/thehighriseco"
-          text="@thehighriseco on Twitter"
-          position={[-0.4, -0.4, 0]}
-        />
-        <AnnotatedLink
           link="https://www.instagram.com/highrisetv"
-          text="@highrisetv"
-          position={[-0.4, -0.6, 0]}
+          text="@HIGHRISETV"
+          position={[-0.3, -0.1, 0]}
         />
         <AnnotatedLink
-          link="mailto:info@thehighriseco.com"
-          text="Bang our line: info@thehighriseco.com"
-          position={[-0.4, -0.8, 0]}
+          link="https://www.instagram.com/thehighriseco"
+          text="@THEHIGHRISECO"
+          position={[-0.3, -0.3, 0]}
+        />
+        <AnnotatedLink
+          link="https://www.instagram.com/2girls.1bong/"
+          text="@2GIRLS.1BONG"
+          position={[-0.3, -0.5, 0]}
+        />
+        <AnnotatedLink
+          link="https://www.youtube.com/user/TheHighRiseCo"
+          text="  HRTV YOUTUBE"
+          position={[-0.32, -0.7, 0.05]}
+        />
+        <AnnotatedLink
+          link="https://www.youtube.com/channel/UCvV3rzgG0Pd96Hdy-bYZH8A"
+          text="  HRAGENCY YOUTUBE"
+          position={[-0.32, -0.9, 0.05]}
         />
       </group>
       <group
@@ -217,18 +272,27 @@ export default function Highrise() {
         position={[-1.63, 1.07, 0.15]}
         rotation-y={-Math.PI / 2}
       >
-        <Interactable onClick={handleHRTVLink}>
-          <Image src={`${CONTENT_FOLDER}/1.jpg`} framed size={1.5} />
-        </Interactable>
+        <Image src={`${CONTENT_FOLDER}/1.jpg`} framed size={1.5} />
+        <ClickHere
+          position-y={-0.85}
+          link="https://www.highrisetv.com/hrtv-blog"
+          color="black"
+        />
       </group>
       <group
         name="wall-bottom-middle"
         position={[-1.63, 1.07, 4.125]}
         rotation-y={-Math.PI / 2}
       >
-        <Interactable onClick={handleHRDeckLink}>
-          <Image src={`${CONTENT_FOLDER}/3.jpg`} framed size={1.7} />
-        </Interactable>
+        <Text position-y={0.6} color="black">
+          2021 AGENCY DECK
+        </Text>
+        <Image src={`${CONTENT_FOLDER}/3.jpg`} framed size={1.7} />
+        <ClickHere
+          position-y={-0.7}
+          link="https://www.dropbox.com/s/b9xrt379ocwc1n7/HRmarketing2021%20%28dragged%29.pdf?dl=0"
+          color="black"
+        />
       </group>
       <group
         name="wall-bottom-right"
@@ -254,67 +318,71 @@ export default function Highrise() {
         rotation-y={Math.PI / 2}
       >
         <Image
-          src={`${CONTENT_FOLDER}/9.jpg`}
+          src={`${CONTENT_FOLDER}/9.png`}
           framed
           size={1.75}
           position={[3.25, 0.4, 0]}
         />
         <Image
-          src={`${CONTENT_FOLDER}/8.jpg`}
+          src={`${CONTENT_FOLDER}/8.png`}
           framed
           size={1.75}
           position={[1.25, 0.4, 0]}
         />
         <Image
-          src={`${CONTENT_FOLDER}/7.jpeg`}
+          src={`${CONTENT_FOLDER}/7.png`}
           framed
           size={1.75}
           position={[-0.75, 0.4, 0]}
         />
-        <group position-x={-4.25}>
-          {/* @ts-ignore */}
-          <Text
-            fontSize={0.1}
-            color="black"
-            anchorX="left"
-            position={[1.4, 0.3, 0]}
-          >
-            Explore:
-          </Text>
+        <group position-x={-3.95}>
           <Video
             framed
             size={2}
             src={`${CONTENT_FOLDER}/2.mp4`}
-            position-y={0.4}
+            position-y={0.35}
             position-x={0.3}
           />
-          <AnnotatedLink
-            link="https://thehighriseco.com"
-            text="Visit The Highrise Co"
-            position-y={0.1}
-            position-x={1.5}
-          />
-          <AnnotatedLink
-            link="https://highrisetv.com"
-            text="Visit Highrise TV"
-            position-y={-0.1}
-            position-x={1.5}
-          />
-          <AnnotatedLink
-            link="https://www.highrise-agency.com/"
-            text="Visit the Highrise Agency"
-            position-y={-0.3}
-            position-x={1.5}
-          />
-          <AnnotatedLink
-            link="https://thehighriseco.shop/"
-            text="Visit the Shop"
-            position-y={-0.5}
-            position-x={1.5}
-          />
+          <group position-x={0.025} name="directory">
+            {/* @ts-ignore */}
+            <Text
+              fontSize={0.1}
+              color="black"
+              anchorX="left"
+              position={[-0.8, -0.8, 0]}
+            >
+              Directory:
+            </Text>
+            <Text
+              fontSize={0.1}
+              color="black"
+              anchorX="center"
+              position={[0.35, 1.5, 0]}
+            >
+              A NEW AGE 420 MEDIA AGENCY
+            </Text>
+            <AnnotatedLink
+              link="https://highrisetv.com"
+              text="HIGHRISE TV"
+              position-y={-0.8}
+              position-x={-0.25}
+            />
+            <AnnotatedLink
+              link="https://www.highrise-agency.com/"
+              text="HIGHRISE AGENCY"
+              position-y={-0.8}
+              position-x={0.325}
+            />
+            <AnnotatedLink
+              link="https://thehighriseco.shop/"
+              text="SHOP"
+              position-y={-0.8}
+              position-x={1.075}
+            />
+          </group>
         </group>
         <Image
-          src={`${CONTENT_FOLDER}/10.jpg`}
+          src={`${CONTENT_FOLDER}/10.png`}
           framed
           size={1.75}
           position={[-10.5, 0.4, 0]}
@@ -334,22 +402,40 @@ export default function Highrise() {
           position-y={0.4}
         />
       </group>
-      {/*<Image*/}
-      {/*  name="raining-weed"*/}
-      {/*  src={`${CONTENT_FOLDER}/raining-weed.gif`}*/}
-      {/*  framed*/}
-      {/*  size={10}*/}
-      {/*  rotation-y={Math.PI}*/}
-      {/*  position={[-1.4, 1.5, 19]}*/}
-      {/*/>*/}
-      {/*<Image*/}
-      {/*  name="raining-weed-other"*/}
-      {/*  src={`${CONTENT_FOLDER}/raining-weed.gif`}*/}
-      {/*  framed*/}
-      {/*  size={12}*/}
-      {/*  rotation-y={0}*/}
-      {/*  position={[-1.4, 1.5, -12]}*/}
-      {/*/>*/}
+      <group rotation-z={Math.PI / 2} position={[0, 1, -3.85]}>
+        <Image
+          position-y={-0.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+        <Image
+          position-y={1.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+        <Image
+          position-y={3.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+      </group>
+      <group rotation={[0, Math.PI, -Math.PI / 2]} position={[0, 1, 12.075]}>
+        <Image
+          position-y={-0.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+        <Image
+          position-y={1.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+        <Image
+          position-y={3.5}
+          scale={[1.5, 1.25, 1]}
+          src={`${CONTENT_FOLDER}/FCKMTRC1.png`}
+        />
+      </group>
     </group>
   );
 }

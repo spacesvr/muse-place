@@ -25,6 +25,13 @@ export default function MuseHQ() {
         gl: { antialias: false },
       }}
       dev={process.env.NODE_ENV === "development"}
+      simulationProps={{
+        signalHost: "musehq.us-west-1.elasticbeanstalk.com",
+        signalPort: 443,
+        signalPath: "/signal",
+        socketServer: "wss://musehq.us-west-1.elasticbeanstalk.com",
+        frequency: 25,
+      }}
     >
       <IdentityLayer>
         <Onboarding />

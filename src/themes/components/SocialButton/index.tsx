@@ -9,6 +9,7 @@ import Youtube from "./models/Youtube";
 import Typeform from "./models/Typeform";
 import Soundcloud from "./models/Soundcloud";
 import Email from "./models/Email";
+import Nifty from "./models/Nifty";
 import { GroupProps } from "@react-three/fiber";
 
 type SocialProps = {
@@ -34,6 +35,8 @@ export default function SocialButton(props: SocialProps) {
     ? Typeform
     : lowerLink.includes("soundcloud.com")
     ? Soundcloud
+    : lowerLink.includes("niftygateway.com")
+    ? Nifty
     : Web;
 
   const handleClick = () => window.open(link, "_blank");

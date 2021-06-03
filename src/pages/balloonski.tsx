@@ -28,7 +28,7 @@ const linkData = [
     volume: 0.15,
   },
   {
-    src: `${url}/NFT-Gator-Water.mp4`,
+    src: `${url}/nft.mp4`,
     audio: true,
     volume: 0.15,
   },
@@ -60,10 +60,10 @@ const LinkTree: NextPage = () => {
         environmentProps={envProps}
         premium
         simulationProps={{
-          signalHost: "alto.us-west-1.elasticbeanstalk.com",
+          signalHost: "balloonski.us-west-1.elasticbeanstalk.com",
           signalPort: 443,
           signalPath: "/signal",
-          socketServer: "wss://alto.us-west-1.elasticbeanstalk.com:8081",
+          socketServer: "wss://balloonski.us-west-1.elasticbeanstalk.com:8081",
           frequency: 25,
         }}
       >

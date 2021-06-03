@@ -1,11 +1,12 @@
 import { Image, Video } from "spacesvr";
-import Placard from "../../../themes/components/Placard";
-import SocialButton from "../../../themes/components/SocialButton";
+import SocialButton from "themes/components/SocialButton";
 import { GroupProps } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
+import TitleCard from "./components/TitleCard";
 
 const CONTENT_FOLDER =
   "https://d27rt3a60hh1lx.cloudfront.net/content/muse.place/jasonmatias";
+const CONTACT = "mailto:jason@jasonmatias.com?";
 
 function AnnotatedLink(props: { link: string; text?: string } & GroupProps) {
   const { link, text = link.replace("https://", ""), ...restProps } = props;
@@ -33,14 +34,22 @@ export default function JasonMatias() {
     <group name="jason-matias">
       <group
         name="wall-top"
-        position={[2.49, 1.07, 4]}
+        position={[2.49, 0.9, 4]}
         rotation-y={-Math.PI / 2}
       >
         <Image
           src={`${CONTENT_FOLDER}/FTLL.jpg`}
           framed
-          size={1.6}
+          frameWidth={0.75}
+          size={1.2}
           position-x={-6.5}
+        />
+        <TitleCard
+          position={[-5.6, -0.1, 0.1]}
+          title="For The Love Of Light"
+          width={0.8}
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/for-the-love-of-light/"
         />
         <group name="connect" position={[-2.65, -0.1, 0]}>
           {/* @ts-ignore */}
@@ -62,38 +71,64 @@ export default function JasonMatias() {
         <Image
           src={`${CONTENT_FOLDER}/WanderingStar.jpg`}
           framed
+          frameWidth={0.75}
           size={2}
-          position-x={0.8}
+          position-x={0.2}
+        />
+        <TitleCard
+          position={[1.7, -0.3, 0.2]}
+          rotation-x={-0.5}
+          title="Wandering Star"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/wandering-star/"
         />
         <Image
           src={`${CONTENT_FOLDER}/LanikaiSilence.jpg`}
           framed
+          frameWidth={0.75}
           size={1.6}
           position-x={6.5}
+        />
+        <TitleCard
+          position={[7.35, -0.1, 0.1]}
+          title="Silence"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/seascapes#/template/"
         />
       </group>
       <group
         name="wall-top-left"
-        position={[-1.39, 1.07, 0.62]}
+        position={[-1.25, 0.9, 0.62]}
         rotation-y={Math.PI / 2}
       >
-        <Image src={`${CONTENT_FOLDER}/Solitude.jpg`} framed />
-        {/*<Placard title="Solitude">*/}
-        {/*  There is something extremely calming about boats to me. At a lake*/}
-        {/*  shrouded in fog in New York I really felt as though the world was only*/}
-        {/*  as large as openings between the mist. Like covering your head with*/}
-        {/*  the blankets and willing that dream back. The mist was my blanket. It*/}
-        {/*  felt invigorating when I filled my chest with it. While waiting for*/}
-        {/*  the small boat to turn in the current I imagined that the condensed*/}
-        {/*  air I exhaled on the cool morning was adding to the morning’s misty*/}
-        {/*  blanket; I was a part of the magic. That was just Nature allowing me*/}
-        {/*    to play along the way she allows all of us from time to time, if we*/}
-        {/*    pay attention to her.*/}
-        {/*</Placard>*/}
+        <Image
+          src={`${CONTENT_FOLDER}/Solitude.jpg`}
+          framed
+          frameWidth={0.75}
+          position={[0, 0, -0.125]}
+          scale={1.1}
+        />
+        <TitleCard
+          position={[0, -0.65, 0.075]}
+          rotation-x={-0.5}
+          title="Solitude"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/lonely-boats#/solitude/"
+        />
         <Image
           src={`${CONTENT_FOLDER}/CrescendoAndGale.jpg`}
           framed
-          position-x={1}
+          frameWidth={0.75}
+          position={[1, 0, -0.125]}
+          scale={1.1}
+        />
+        <TitleCard
+          position={[1, -0.65, 0.075]}
+          rotation-x={-0.5}
+          width={0.8}
+          title="Crescendo And Gale"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/black-and-white#/crescendo-and-gale/"
         />
       </group>
       <group
@@ -104,6 +139,7 @@ export default function JasonMatias() {
         <Video
           src={`${CONTENT_FOLDER}/4.mp4`}
           framed
+          frameWidth={0.75}
           size={1.5}
           position-y={0.4}
         />
@@ -114,7 +150,7 @@ export default function JasonMatias() {
         />
         {/* @ts-ignore */}
         <Text
-          position={[0.19, -0.1, 0]}
+          position={[0.18, -0.11, 0]}
           color="black"
           fontSize={0.0375}
           maxWidth={1.225}
@@ -142,96 +178,203 @@ export default function JasonMatias() {
         position={[-1.39, 1.07, 8.1]}
         rotation-y={Math.PI / 2}
       >
-        <Image
-          src={`${CONTENT_FOLDER}/ASunStory.jpg`}
-          framed
-          size={1.5}
-          position-y={0.6}
-        />
-        <Image src={`${CONTENT_FOLDER}/EdgeOfSolace.jpg`} framed size={1.5} />
-        <Image
-          src={`${CONTENT_FOLDER}/AvendasoraLeaf.jpg`}
-          framed
-          size={1.5}
-          position-y={-0.6}
-        />
+        <group position-y={0.5} name="asunstory">
+          <Image
+            src={`${CONTENT_FOLDER}/ASunStory.jpg`}
+            framed
+            frameWidth={0.75}
+            size={1.25}
+          />
+        </group>
+        <group name="edgeofsolace" position-y={-0.05}>
+          <Image
+            src={`${CONTENT_FOLDER}/EdgeOfSolace.jpg`}
+            framed
+            frameWidth={0.75}
+            size={1.25}
+          />
+        </group>
+        <group position-y={-0.6} name="avenadoraleaf">
+          <Image
+            src={`${CONTENT_FOLDER}/AvendasoraLeaf.jpg`}
+            framed
+            frameWidth={0.75}
+            size={1.25}
+          />
+        </group>
+        <group
+          name="right-wall-title-cards"
+          position={[-0.75, -0.9, 0.25]}
+          rotation-x={-0.5}
+        >
+          <TitleCard
+            title="A Sun Story"
+            contactUrl="https://google.com"
+            visitUrl="https://www.jasonmatias.com/landscapes#/a-sun-story/"
+            position-x={0}
+          />
+          <TitleCard
+            title="Edge Of Solace"
+            contactUrl="https://google.com"
+            visitUrl="https://www.jasonmatias.com/landscapes#/edge-of-solace/"
+            position-x={0.75}
+          />
+          <TitleCard
+            title="Avensadora Leaf"
+            contactUrl="https://google.com"
+            visitUrl="https://www.jasonmatias.com/landscapes#/avendasora-leaf/"
+            position-x={1.5}
+          />
+        </group>
       </group>
       <group
         name="wall-bottom-left"
-        position={[-1.63, 1.07, 0.15]}
+        position={[-1.63, 0.9, 0.15]}
         rotation-y={-Math.PI / 2}
       >
         <Image
           src={`${CONTENT_FOLDER}/IceCaveWithAView.jpg`}
           framed
+          frameWidth={0.75}
           size={1.5}
+          position-x={-0.05}
+        />
+        <TitleCard
+          position={[0.3, -0.65, 0.1]}
+          rotation-x={-0.5}
+          width={0.8}
+          title="Ice Cave With A View"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/ice-cave-with-a-view/"
         />
       </group>
       <group
         name="wall-bottom-middle"
-        position={[-1.63, 1.07, 4.125]}
+        position={[-1.63, 0.9, 4.125]}
         rotation-y={-Math.PI / 2}
       >
-        <Image src={`${CONTENT_FOLDER}/TreeOfFire.jpg`} framed size={1.5} />
+        <Image
+          src={`${CONTENT_FOLDER}/TreeOfFire.jpg`}
+          framed
+          frameWidth={0.75}
+          size={1.5}
+          position-x={-0.05}
+        />
+        <TitleCard
+          position={[0.55, -0.65, 0.1]}
+          rotation-x={-0.5}
+          title="Tree of Fire"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/tree-of-fire/"
+        />
       </group>
       <group
         name="wall-bottom-right"
-        position={[-1.63, 1.07, 8.1]}
+        position={[-1.63, 0.9, 8.1]}
         rotation-y={-Math.PI / 2}
       >
-        <Image src={`${CONTENT_FOLDER}/FirstLightBW.jpg`} framed size={1.5} />
+        <Image
+          src={`${CONTENT_FOLDER}/FirstLightBW.jpg`}
+          framed
+          frameWidth={0.75}
+          size={1.5}
+          position-x={-0.05}
+        />
+        <TitleCard
+          position={[0.55, -0.55, 0.1]}
+          rotation-x={-0.5}
+          title="First Light"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/black-and-white#/first-light/"
+        />
       </group>
       <group
         name="wall-bottom"
-        position={[-5.47, 0.95, 0.6]}
+        position={[-5.47, 0.9, 0.6]}
         rotation-y={Math.PI / 2}
       >
-        <Image
-          src={`${CONTENT_FOLDER}/Skyraider.jpg`}
-          framed
-          size={1}
-          position={[2.75, 0, 0]}
+        <group
+          position-y={-0.2}
+          scale={[0.8, 0.8, 0.8]}
+          name="skywardCollection"
+        >
+          <Image
+            src={`${CONTENT_FOLDER}/Skyraider.jpg`}
+            framed
+            frameWidth={0.75}
+            size={1}
+            position={[4.18, 0.25, 0]}
+          />
+          <Image
+            src={`${CONTENT_FOLDER}/Expeditor.jpg`}
+            framed
+            frameWidth={0.75}
+            size={1.3}
+            position={[2.95, 0.25, 0]}
+          />
+          <Image
+            src={`${CONTENT_FOLDER}/Superfortress.jpg`}
+            framed
+            frameWidth={0.75}
+            size={2.2}
+            position={[1, 0.25, 0]}
+          />
+        </group>
+        <TitleCard
+          position={[1.3, -0.5, 0.1]}
+          rotation-x={-0.5}
+          title="Skyward Collection"
+          width={0.8}
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/skyward/"
         />
-        <Image
-          src={`${CONTENT_FOLDER}/Expeditor.jpg`}
-          framed
-          size={1.3}
-          position={[1.25, 0, 0]}
-        />
-        <Image
-          src={`${CONTENT_FOLDER}/Superfortress.jpg`}
-          framed
-          size={2}
-          position={[-1, 0, 0]}
-        />
-        <group position-x={-4.25}>
-          {/* @ts-ignore */}
-          <Text color="black" fontSize={0.15} position={[-1, 0.5, -0.03]}>
-            New Releases April 7th
-          </Text>
+        <group position-x={-2.56}>
           <Image
             framed
-            size={1.25}
-            src={`${CONTENT_FOLDER}/MolokaiPano.jpg`}
-            position-x={-2}
+            frameWidth={0.75}
+            size={2}
+            src={`${CONTENT_FOLDER}/HawaiiWave.jpg`}
+            position-x={-2.4}
+          />
+          <TitleCard
+            position={[-1.75, -0.5, 0.1]}
+            rotation-x={-0.5}
+            title="Three Fates"
+            contactUrl={CONTACT}
+            visitUrl="https://www.jasonmatias.com/seascapes#/three-fates/"
           />
           <Image
             framed
-            size={1.25}
-            src={`${CONTENT_FOLDER}/HawaiiWave3.jpeg`}
+            frameWidth={0.75}
+            size={2}
+            src={`${CONTENT_FOLDER}/MolokaiPano.jpg`}
+            position-x={0.4}
+          />
+          <TitleCard
+            position={[-0.25, -0.5, 0.1]}
+            rotation-x={-0.5}
+            title="Molokai Light"
+            contactUrl={CONTACT}
+            visitUrl="https://www.jasonmatias.com/seascapes#/molokai-light/"
           />
         </group>
         <Image
           src={`${CONTENT_FOLDER}/LastLight.jpg`}
           framed
+          frameWidth={0.75}
           size={2}
           position={[-9.5, 0, 0]}
+        />
+        <TitleCard
+          position={[-8, -0.25, 0.1]}
+          title="Last Light"
+          contactUrl={CONTACT}
+          visitUrl="https://www.jasonmatias.com/landscapes#/last-light/"
         />
       </group>
       <Image
         name="outside-edgefsolace"
         src={`${CONTENT_FOLDER}/EdgeOfSolace.jpg`}
-        framed
         size={10}
         rotation-y={Math.PI}
         position={[-1.4, 1.5, 19]}
@@ -239,7 +382,6 @@ export default function JasonMatias() {
       <Image
         name="outside-eddie"
         src={`${CONTENT_FOLDER}/EddieWave.jpg`}
-        framed
         size={12}
         rotation-y={0}
         position={[-1.4, 1.5, -12]}

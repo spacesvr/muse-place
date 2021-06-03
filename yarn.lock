@@ -6083,10 +6083,10 @@ source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-spacesvr@^1.6.9:
-  version "1.6.9"
-  resolved "https://registry.yarnpkg.com/spacesvr/-/spacesvr-1.6.9.tgz#d0811c703d6f8005ccdc09f5f26a6f8e25ff361f"
-  integrity sha512-11XO9xQ+N/qEEd/W6aA9nsRQPNTd7CGyFlrmqOoZ5jwkTOhnEypJCBr+jT0u/sv9RwyzLDzSGAssHXna6+RZvQ==
+spacesvr@^1.6.11:
+  version "1.6.11"
+  resolved "https://registry.yarnpkg.com/spacesvr/-/spacesvr-1.6.11.tgz#84162a013bcfe0c4188b6552eb3ef660023af6b3"
+  integrity sha512-BR/IzyY71BDrthnjOA9lcDmF3F44VqWUxa/DDzB6Hk7kRAFSKwyKBpbCT6YCMF4ErXXUvLm5zsk01cpVjmjbyw==
   dependencies:
     "@emotion/core" "^10.0.28"
     "@emotion/styled" "^10.0.27"

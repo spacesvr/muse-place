@@ -1,31 +1,51 @@
-import { GroupProps } from "@react-three/fiber";
+import { GroupProps, useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { DoubleSide, ShaderMaterial, Vector2 } from "three";
 import { frag, vert } from "./shaders/plate";
+import { useLimiter } from "spacesvr";
 
 type Props = {
   title?: string;
   subtitle?: string;
-  children?: string;
+  children?: string | ReactNode | ReactNode[];
   link?: string;
   width?: number;
+  height?: number | "auto";
+  size?: number;
 } & GroupProps;
 
 export default function Placard(props: Props) {
-  const { title, subtitle, children, link, width = 0.65, ...restProps } = props;
+  const {
+    title,
+    subtitle,
+    children,
+    link,
+    width = 1,
+    size = 1,
+    height = "auto",
+    ...restProps
+  } = props;
 
-  const PADDING_X = 0.06;
-  const PADDING_Y = 0.04;
-  const HEIGHT = Math.max(0.5, (children || "").length * 0.00115);
+  const PADDING_X = 0.03;
+  const PADDING_Y = 0.07;
+  const HEIGHT =
+    height !== "auto"
+      ? height + PADDING_Y * 2
+      : Math.max(0.5, ((children as string) || "").length * 0.000825) +
+        PADDING_Y * 2;
+  const WIDTH = 0.65 * width;
+  const SIZE = size * 0.65;
 
   const top = HEIGHT / 2 - PADDING_Y;
-  const left = -width / 2 + PADDING_X;
-  const maxWidth = width - PADDING_X * 2;
+  const left = -WIDTH / 2 + PADDING_X;
+  const maxWidth = WIDTH - PADDING_X * 2;
+
+  const limiter = useLimiter(30);
 
   const allStyles = {
     color: "black",
-    textAlign: "left",
+    textAlign: "justify",
     anchorX: "left",
     anchorY: "top",
   };
@@ -47,7 +67,8 @@ export default function Placard(props: Props) {
 
   const bodyStyles = {
     ...allStyles,
-    fontSize: 0.0275,
+    fontSize: 0.026,
+    lineHeight: 1.3,
     maxWidth,
     position: [left, top - (subtitle ? 0.15 : 0.1), 0],
   };
@@ -57,8 +78,9 @@ export default function Placard(props: Props) {
       new ShaderMaterial({
         uniforms: {
           time: { value: 0 },
+          seed: { value: Math.random() },
           borderRadius: { value: 0.025 },
-          dimensions: { value: new Vector2(width, HEIGHT) },
+          dimensions: { value: new Vector2(WIDTH * SIZE, HEIGHT * SIZE) },
         },
         vertexShader: vert,
         fragmentShader: frag,
@@ -67,18 +89,25 @@ export default function Placard(props: Props) {
     []
   );
 
+  useFrame(({ clock }) => {
+    if (!plateMat || !limiter.isReady(clock)) return;
+    plateMat.uniforms.time.value = clock.getElapsedTime();
+  });
+
   return (
     <group name="placard" {...restProps}>
-      <mesh name="plate" material={plateMat}>
-        <planeBufferGeometry args={[width, HEIGHT]} />
-      </mesh>
-      <group name="content" position-z={0.02}>
-        {/* @ts-ignore */}
-        <Text {...titleStyles}>{title}</Text>
-        {/* @ts-ignore */}
-        <Text {...subtitleStyles}>{subtitle}</Text>
-        {/* @ts-ignore */}
-        <Text {...bodyStyles}>{children}</Text>
+      <group scale={[SIZE, SIZE, SIZE]}>
+        <mesh name="plate" material={plateMat}>
+          <planeBufferGeometry args={[WIDTH, HEIGHT]} />
+        </mesh>
+        <group name="content" position-z={0.005}>
+          {/* @ts-ignore */}
+          <Text {...titleStyles}>{title}</Text>
+          {/* @ts-ignore */}
+          <Text {...subtitleStyles}>{subtitle}</Text>
+          {/* @ts-ignore */}
+          <Text {...bodyStyles}>{children}</Text>
+        </group>
       </group>
     </group>
   );
