@@ -3,14 +3,13 @@ import { StandardEnvironment, Audio } from "spacesvr";
 import { Preload } from "@react-three/drei";
 import Musehq from "./models/Musehq";
 import AmbientParticles from "./components/AmbientParticles";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { VisualIdea } from "./components/VisualIdea";
 import Builder00 from "./characters/Builder00";
 import Builder07 from "./characters/Builder07";
 import Builder0102 from "./characters/Builder0102";
 import { IdentityLayer } from "./layers/identity";
 import { Vector3 } from "three";
-import Environment from "./components/Environment";
+import Onboarding from "./components/Onboarding";
 
 export default function MuseHQ() {
   return (
@@ -25,9 +24,10 @@ export default function MuseHQ() {
         dpr: 1,
         gl: { antialias: false },
       }}
-      dev={process.env.NODE_ENV === "development"}
+      // dev={process.env.NODE_ENV === "development"}
     >
       <IdentityLayer>
+        <Onboarding />
         <Preload all />
         <ambientLight intensity={2} />
         <AmbientParticles position={[-4 - 7.09, 0, -3 - 3.19]} />

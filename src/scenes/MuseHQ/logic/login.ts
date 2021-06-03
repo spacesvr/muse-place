@@ -86,7 +86,7 @@ export const useLoginLogic = (
       decisions: [
         {
           name: "try again",
-          nextKey: "login-email",
+          nextKey: "login",
         },
         {
           name: "nevermind",

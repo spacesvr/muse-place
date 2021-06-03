@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import { ReactNode } from "react";
 import { proxy } from "valtio";
 import fetch, { RequestInit } from "node-fetch";
+import { analytics } from "../utils/analytics";
 
 const TOKEN_ID = "muse-jwt";
 const URL = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -36,6 +37,8 @@ export class Identity {
     const response = await fetch(`${URL}/auth/sign_in`, params);
     const json = await response.json();
 
+    analytics.capture("login", { email });
+
     if (response.status === 200) {
       localStorage.setItem(TOKEN_ID, json.token);
       this.token = json.token;
@@ -63,6 +66,8 @@ export class Identity {
     const response = await fetch(`${URL}/auth/sign_up`, params);
     const json = await response.json();
 
+    analytics.capture("signup", { name, email });
+
     return { success: response.status === 200, message: json.message };
   }
 
@@ -82,6 +87,8 @@ export class Identity {
       this.name = json.name;
       this.email = json.email;
       this.groups = json.groups;
+      console.log(this);
+      analytics.identify(json.email, { name: this.name });
     }
 
     return { success: response.status === 200, message: json.message };
