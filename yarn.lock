@@ -5416,7 +5416,7 @@ r3f-perf@^0.79.0:
     lerp "^1.0.3"
     zustand "^3.2.0"
 
-rafz@^0.1.13, rafz@^0.1.14:
+rafz@^0.1.14:
   version "0.1.14"
   resolved "https://registry.yarnpkg.com/rafz/-/rafz-0.1.14.tgz#164f01cf7cc6094e08467247ef351ef5c8d278fe"
   integrity sha512-YiQkedSt1urYtYbvHhTQR3l67M8SZbUvga5eJFM/v4vx/GmDdtXlE2hjJIyRjhhO/PjcdGC+CXCYOUA4onit8w==
