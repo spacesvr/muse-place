@@ -1,7 +1,9 @@
 import { Suspense, useMemo } from "react";
 import Structure from "./models/Structure";
 import StructureOpen from "./models/StructureOpen";
-import Floor2 from "./models/Floor2";
+import Floor2 from "./models/floorplans/Floor2";
+import Floor3 from "./models/floorplans/Floor3";
+import Floor5 from "./models/floorplans/Floor5";
 import { Preload, Text } from "@react-three/drei";
 import Artwork from "../components/Artwork";
 import { ArtworkProps } from "../components/Artwork";
@@ -78,7 +80,17 @@ export default function Gotham(props: GothamProps) {
         ) : (
           <Structure night={night} />
         )}
-        {floorplan && floorplan === 2 && <Floor2 night={night} />}
+        {!floorplan ? (
+          <></>
+        ) : floorplan === 2 ? (
+          <Floor2 night={night} />
+        ) : floorplan === 3 ? (
+          <Floor3 night={night} />
+        ) : floorplan === 5 ? (
+          <Floor5 night={night} />
+        ) : (
+          <></>
+        )}
       </Suspense>
       <group position={[-5.8, 1.5, 5]} rotation={[0, Math.PI / 2, 0]}>
         {/* @ts-ignore */}
